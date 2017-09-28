@@ -6,23 +6,6 @@ import java.lang.Math;
 public class GuessingGame {
     public static void main(String[] args)
     {
-        /*
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter your name.");
-        String s = input.next();
-        System.out.println("Welcome to the game " + s + ".");
-        System.out.println("How old are you?");
-        int a =  input.nextInt();
-        System.out.print("You are " + a + " years old.");
-        if(a >= 18)
-        {
-            System.out.print(" YOU ARE OLD ENOUGH!");
-        }
-        else
-        {
-            System.out.print(" NOT OLD ENOUGH!");
-        }
-            */
         GuessingGame();
 
     }
