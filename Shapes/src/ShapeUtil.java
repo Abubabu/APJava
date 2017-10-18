@@ -1,10 +1,12 @@
 import java.util.Random;
+
+
 public class ShapeUtil {
-	public static double sumPerimiter(Shape[] shapeArr) {
+	public static double sumPerimeter(Shape[] shapeArr) {
 		double sum = 0;
 		for(int i = 0; i < shapeArr.length;i++ )
 		{
-			sum +=  shapeArr[i].calculatePerimiter();
+			sum +=  shapeArr[i].calculatePerimeter();
 		}
 		return sum;
 	}
@@ -19,16 +21,18 @@ public class ShapeUtil {
 	public static Shape getRandomShape()
 	{
 		Random rand = new Random();
-		int x = rand.nextInt(100);
-		switch(x)
-		{
-		case(0):
-			return Circle(rand.nextInt(100)+1);
-		case(1):
-			return Rectangle(rand.nextInt(100)+1);
-		default: 
-			return Square(10);
-		}
+		int x = rand.nextInt(3);
+		switch (x) 
+        {
+            case 0:
+                return new Circle(rand.nextInt(100));
+            case 1:
+                return new Rectangle(rand.nextInt(50), rand.nextInt(50));
+            case 2:
+                return new Square(rand.nextInt(50));
+            default:
+            	return new Circle(rand.nextInt(100));
+        }
 		
 	}
 }

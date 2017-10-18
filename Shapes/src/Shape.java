@@ -1,5 +1,6 @@
 
 public interface Shape {
-	public abstract double calculatePerimiter();
+	public abstract double calculatePerimeter();
 	public abstract double calculateArea();
+	public abstract String toString();
 }
