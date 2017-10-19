@@ -21,7 +21,7 @@ public class ShapeUtil {
 	public static Shape getRandomShape()
 	{
 		Random rand = new Random();
-		int x = rand.nextInt(3);
+		int x = rand.nextInt(5);
 		switch (x) 
         {
             case 0:

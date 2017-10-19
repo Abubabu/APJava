@@ -28,6 +28,6 @@ public class Trapezoid implements Shape {
     @Override
     public String toString()
     {
-        return "Trapizoid base1: " + base1 + " Trapizoid base2: " + base2 + " Trapizoid side1: " + side1 + " Trapizoid side2: " + side2 + " Area: " + this.calculateArea() + " Perimeter: " + this.calculatePerimeter();
+        return "Trapizoid base1: " + base1 + " Trapizoid base2: " + base2 + " Trapizoid side1: " + side1 + " Trapizoid side2: " + side2 + " Height: " + height + " Area: " + this.calculateArea() + " Perimeter: " + this.calculatePerimeter();
     }
 }
