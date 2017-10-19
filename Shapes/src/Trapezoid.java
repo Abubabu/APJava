@@ -1,5 +1,5 @@
 
-public class Trapezoid {
+public class Trapezoid implements Shape {
     private int base1;
     private int base2;
     private int side1;
@@ -7,7 +7,7 @@ public class Trapezoid {
     private int height;
     public Trapezoid(int base1,int base2,int side1,int side2,int height)
     {
-        this.base1 = base;
+        this.base1 = base1;
         this.base2 = base2;
         this.side1 = side1;
         this.side2 = side2;
@@ -28,6 +28,6 @@ public class Trapezoid {
     @Override
     public String toString()
     {
-        return "Trapizoid base1: " + side + "Trapizoid base2: " + base2 + "Trapizoid side1: " + side1 + "Trapizoid side2: " + side2 + " Area: " + this.calculateArea() + " Perimeter: " + this.calculatePerimeter();
+        return "Trapizoid base1: " + base1 + " Trapizoid base2: " + base2 + " Trapizoid side1: " + side1 + " Trapizoid side2: " + side2 + " Area: " + this.calculateArea() + " Perimeter: " + this.calculatePerimeter();
     }
 }
