@@ -1,6 +1,6 @@
 package game;
 
-//import items.Item;
+import items.Item;
 import rooms.*;
 //import people.Person;
 
@@ -54,6 +54,3 @@ public class GameRunner {
     }
 
 }
-
-
-
