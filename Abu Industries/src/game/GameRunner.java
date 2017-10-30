@@ -26,13 +26,9 @@ public class GameRunner {
                     boolean[] doors = {true,true,true,true}; //N,E,S,W
                     Person[] people = {};
                     Item[] items = {};
-                    if(k == 1 && j ==2)
+                    if(i == 1 && j ==2)
                     {
                     	row[i] = new Bossroom(doors, people, items, i, j,k);  // (if fight with boss is won, you move up a floor)
-                    	System.out.print(i);
-                    	System.out.print(j);
-                    	System.out.print(k);
-                    	System.out.println();
                     }
                     else if(i == 1)
                     {
