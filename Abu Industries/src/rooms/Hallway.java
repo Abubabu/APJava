@@ -6,27 +6,45 @@ import items.Item;
 
 public class Hallway extends Room {
 
-    public Hallway(boolean[] doors, Person[] people, Item[] items, int x, int y)
+    public Hallway(boolean[] doors, Person[] people, Item[] items, int x, int y,int k)
     {
-        super(doors, people, items, x, y);
+        super(doors, people, items, x, y,k);
     }
 
-    public void print()
+    public void print(int k, int j, int i)
     {
-        if (getOccupants().length != 0)
+      /*  if (getNpc().length != 0)	//prints out pointer to player1
         {
-            System.out.print(getOccupants()[0].print());
+  //          System.out.print(getNpc()[0].print());
+        	System.out.print(getNpc()[0]);
         }
-        else if (this.explored)
+        else*/ if (this.explored)
         {
-            System.out.print("[ H ]");
+            System.out.print("[E]");
         }
         else
         {
-            System.out.print("[   ]");
+            System.out.print("["+ k + j + i + "]");
         }
 
-    }
+    }	
+ /*   public void print()
+    {
+        if (getNpc().length != 0)
+        {
+  //          System.out.print(getNpc()[0].print());
+        	System.out.print(getNpc()[0]);
+        }
+        else if (this.explored)
+        {
+            System.out.print("[E]");
+        }
+        else
+        {
+            System.out.print("[ ]");
+        }
+
+    }	*/
     
     public String toString()
     {
@@ -51,4 +69,6 @@ public class Hallway extends Room {
     	
     	return response;
     }
+
+	
 }

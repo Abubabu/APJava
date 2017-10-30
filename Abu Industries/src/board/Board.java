@@ -1,38 +1,58 @@
 package board;
 
+import items.Item;
+import people.Person;
+import rooms.Hallway;
 import rooms.Room;
 
 public class Board {
 
 
-    private Room[][] schoolMap;
+    private Room[][][] abuIndustries;
 
 
 
-    public Board(Room[][] schoolMap)
+    public Board(Room[][][] abuIndustries)
     {
-        this.schoolMap = schoolMap;
+        this.abuIndustries = abuIndustries;
     }
 
     public void printMap()
     {
 
+    	 for(int k = 0; k<abuIndustries.length; k++)
+         {
+         	Room[][] floor = abuIndustries[k];
+         	for (int j = 0; j<floor.length; j++)
+             {
+             	Room[] row = floor[j];
+                 for (int i = 0; i<row.length;i++)
+                 {
+                    row[i].print(k,j,i);
+                 }
+                 System.out.println();
 
-        for(Room[] row : schoolMap)
+             }
+         }
+      /*  for(Room[][] floor : abuIndustries)
         {
-            for (Room room : row)
+            for (Room[] row : floor)
             {
-                room.print();
+            	 for (Room room : row)
+                 {
+                     room.print();
+                 }
+            	 System.out.println();
             }
-            System.out.println();
-        }
+           
+        }	*/
     }
-    public Room[][] getSchoolMap() {
-        return schoolMap;
+    public Room[][][] getGamemap() {
+        return abuIndustries;
     }
 
-    public void setSchoolMap(Room[][] schoolMap) {
-        this.schoolMap = schoolMap;
+    public void setGamemap(Room[][][] abuIndustries) {
+        this.abuIndustries = abuIndustries;
     }
 
 

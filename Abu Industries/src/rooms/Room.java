@@ -11,12 +11,13 @@ public abstract class Room {
     private Person[] npc;
     private Item[] items;
     public boolean explored;
-    private int x, y;
+    private int x, y, k;
 
-    public Room (boolean[] doors, Person[] npc, Item[] items, int x, int y)
+    public Room(boolean[] doors, Person[] npc, Item[] items, int x, int y, int k)
     {
     	this.x = x;
     	this.y = y;
+    	this.k = k;
         this.doors = doors;
         this.npc = npc;
         this.items = items;
@@ -33,6 +34,7 @@ public abstract class Room {
         this.npc = Arrays.copyOf(this.npc,this.npc.length+1);
         this.npc[this.npc.length-1] = p;
     }
+    //need to add a remove npc function
     public boolean[] getDoors()
     {
     	return doors;
@@ -51,5 +53,9 @@ public abstract class Room {
     {
     	return items;
     }
-    public abstract void print();
+    public void isExplored()
+    {
+    	this.explored = true;
+    }
+    public abstract void print(int k2, int j, int i);
 }
