@@ -1,5 +1,5 @@
 package game;
-
+import rooms.Room;
 import items.Item;
 import people.Person;
 import rooms.*;
@@ -23,11 +23,26 @@ public class GameRunner {
             	Room[] row = floor[j];
                 for (int i = 0; i<row.length;i++)
                 {
-                    boolean[] doors = {true,true,true,true};
+                    boolean[] doors = {true,true,true,true}; //N,E,S,W
                     Person[] people = {};
                     Item[] items = {};
-
-                    row[i] = new Hallway(doors, people, items, i, j,k);
+                    if(k == 1 && j ==2)
+                    {
+                    	row[i] = new Bossroom(doors, people, items, i, j,k);  // (if fight with boss is won, you move up a floor)
+                    	System.out.print(i);
+                    	System.out.print(j);
+                    	System.out.print(k);
+                    	System.out.println();
+                    }
+                    else if(i == 1)
+                    {
+                    	row[i] = new Hallway(doors, people, items, i, j,k);
+                    }
+                    else
+                    {
+                    	row[i] = new Room(doors, people, items, i, j,k);
+                    }
+                    
                 }
 
             }
@@ -40,15 +55,16 @@ public class GameRunner {
         boolean gameOn = true;
         Person player1 = Utilities.createPerson();
         Scanner in = new Scanner(System.in);
+        System.out.println("Welcome to the Abu Industries, " + player1.getName());
+        map[0][0][0].addNpc(player1);
+        System.out.println();
+        Abu.printMap();
+        player1.print();
         while(gameOn)
         {
-            System.out.println("Welcome to the Abu Industries, " + player1.getName());
-            map[0][0][0].addNpc(player1);
-            System.out.println();
-            Abu.printMap();
-            player1.print();
             int move = player1.chooseMove();
-            Abu = Utilities.movePlayer(Abu, player1,move);  //updates game map
+            Abu = Utilities.movePlayer(Abu, player1,move);  //updates game map  
+            Abu.printMap();
             //gameOn = false;
         }
 		in.close();

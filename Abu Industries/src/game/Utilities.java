@@ -12,36 +12,41 @@ public class Utilities {
 	}
 	public static Board movePlayer(Board abu, Person player1, int move) {
 		int[] location = player1.getLocation();
-		if(move == 1)
+		abu.getGamemap()[player1.getFloor()][player1.getLocation()[0]][player1.getLocation()[1]].removeNpc();
+		abu.getGamemap()[player1.getFloor()][player1.getLocation()[0]][player1.getLocation()[1]].isExplored();
+	if(move == 1)   //North
 		{
 			if(location[1] <= 1)
 			{
 				player1.setLocation(location[0], location[1]+1);
-	//			abu[0][location[0]][location[1]+1].addNpc(player1);   NANI!!!!??
+				abu.getGamemap()[0][location[0]][location[1]+1].addNpc(player1);   
 				return abu;
 			}
 		}
-		if(move == -1)
+		if(move == -1)	//South
 		{
 			if(location[1] >= 1)
 			{
 				player1.setLocation(location[0], location[1]-1);
+				abu.getGamemap()[0][location[0]][location[1]-1].addNpc(player1);   
 				return abu;
 			}
 		}
-		if(move == 2)
+		if(move == 2)	//East
 		{
 			if(location[0] <= 1)
 			{
 				player1.setLocation(location[0]+1, location[1]);
+				abu.getGamemap()[0][location[0]+1][location[1]].addNpc(player1);   
 				return abu;
 			}
 		}
-		if(move == -2)
+		if(move == -2)	//West
 		{
 			if(location[1] >= 1)
 			{
-				player1.setLocation(location[0], location[1]);
+				player1.setLocation(location[0]-1, location[1]);
+				abu.getGamemap()[0][location[0]-1][location[1]].addNpc(player1);   
 				return abu;
 			}
 		}

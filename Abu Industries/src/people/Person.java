@@ -52,7 +52,7 @@ public abstract class Person {
 		int[] buf = {xcoord,ycoord};
 		return buf;
 	}
-	public double getFloor()
+	public int getFloor()
 	{
 		return floor;
 	}

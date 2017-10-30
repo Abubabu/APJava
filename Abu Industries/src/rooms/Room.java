@@ -5,7 +5,7 @@ import items.Item;
 
 import java.util.Arrays;
 
-public abstract class Room {
+public class Room {
 
     private boolean[] doors;
     private Person[] npc;
@@ -29,12 +29,15 @@ public abstract class Room {
     public void setNpc(Person[] npc) {
         this.npc = npc;
     }
+    public void removeNpc()
+    {
+    	this.npc = Arrays.copyOf(this.npc,this.npc.length-1);
+    }
     public void addNpc(Person p)
     {
         this.npc = Arrays.copyOf(this.npc,this.npc.length+1);
         this.npc[this.npc.length-1] = p;
     }
-    //need to add a remove npc function
     public boolean[] getDoors()
     {
     	return doors;
@@ -57,5 +60,22 @@ public abstract class Room {
     {
     	this.explored = true;
     }
-    public abstract void print(int k2, int j, int i);
+  //  public abstract void print(int k, int j, int i);
+    public void print(int k, int j, int i)
+    {
+        if (getNpc().length != 0)	//prints out pointer to player1
+        {
+  //          System.out.print(getNpc()[0].print());
+        	System.out.print("[Player1]");
+        }
+        else if (this.explored)
+        {
+            System.out.print("[E]");
+        }
+        else
+        {
+            System.out.print("["+ k + j + i + "R]");
+        }
+
+    }	
 }
