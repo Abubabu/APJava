@@ -2,6 +2,7 @@ package game;
 
 import board.Board;
 import items.Item;
+import people.Civilian;
 import people.Person;
 import people.Player1;
 
@@ -52,6 +53,24 @@ public class Utilities {
 		}
 		return abu;
 		
+	}
+	public static Person[] getRandNpc(int k ,int j, int i) {
+		int num = (int)Math.random()*4;
+		Person[] npc = new Person[num];
+		for(int z = 0; z < num; z++)
+		{
+			npc[z] = new Civilian("John doe","Civilian",getRandItem(k,j,i)[0],i,j,k);
+		}
+		return null;
+	}
+	public static Item[] getRandItem(int k ,int j, int i) {
+		int num = (int)Math.random()*2;
+		Item[] npc = new Item[num];
+		for(int z = 0; z < num; z++)
+		{
+			npc[z] = new Item("weapon", "strong");
+		}
+		return null;
 	}
 
 }

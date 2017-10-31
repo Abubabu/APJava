@@ -24,8 +24,8 @@ public class GameRunner {
                 for (int i = 0; i<row.length;i++)
                 {
                     boolean[] doors = {true,true,true,true}; //N,E,S,W
-                    Person[] people = {};
-                    Item[] items = {};
+                    Person[] people = Utilities.getRandNpc(k,j,i);
+                    Item[] items = Utilities.getRandItem(k,j,i);
                     if(i == 1 && j ==2)
                     {
                     	row[i] = new Bossroom(doors, people, items, i, j,k);  // (if fight with boss is won, you move up a floor)
@@ -61,6 +61,7 @@ public class GameRunner {
             int move = player1.chooseMove();
             Abu = Utilities.movePlayer(Abu, player1,move);  //updates game map  
             Abu.printMap();
+            System.out.print(Abu.getGamemap()[player1.getFloor()][player1.getLocation()[0]][player1.getLocation()[1]].toString());
             //gameOn = false;
         }
 		in.close();

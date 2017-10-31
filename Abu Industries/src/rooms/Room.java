@@ -78,4 +78,28 @@ public class Room {
         }
 
     }	
+    public String toString()
+    {
+    	boolean[] doors = this.getDoors();
+    	String response = "This is a Room. It has doors to the ";
+    	if (doors[0])
+    	{
+    		response += "N";
+    	}
+    	
+    	if(doors[1]) {
+    		response += " and E";
+    	}
+    	
+    	if (doors[2]) {
+    		response += " and S";
+    	}
+    	
+    	if (doors[3]) {
+    		response += " and W";
+    	}
+    	response += "\n" + "there are " + this.getItems().length + " items in this room. ";
+    	response += "\n" + "there are " + this.getNpc().length + " people in this room.";
+    	return response + "\n";
+    }
 }

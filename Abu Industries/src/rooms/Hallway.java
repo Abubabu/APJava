@@ -49,7 +49,7 @@ public class Hallway extends Room {
     public String toString()
     {
     	boolean[] doors = this.getDoors();
-    	String response = "This room is a hallway. It has doors to the ";
+    	String response = "This is a hallway. It has doors to the ";
     	if (doors[0])
     	{
     		response += "N";
@@ -67,7 +67,7 @@ public class Hallway extends Room {
     		response += " and W";
     	}
     	
-    	return response;
+    	return response + "\n";
     }
 
 	
