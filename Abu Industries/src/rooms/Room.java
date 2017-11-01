@@ -63,11 +63,11 @@ public class Room {
   //  public abstract void print(int k, int j, int i);
     public void print(int k, int j, int i)
     {
-        if (getNpc().length != 0)	//prints out pointer to player1
-        {
-  //          System.out.print(getNpc()[0].print());
-        	System.out.print("[Player1]");
-        }
+    	 if (isPlayer1Here())	//prints out pointer to player1
+         {
+   //          System.out.print(getNpc()[0].print());
+         	System.out.print("[player1]");
+         }
         else if (this.explored)
         {
             System.out.print("[E]");
@@ -102,4 +102,16 @@ public class Room {
     	response += "\n" + "there are " + this.getNpc().length + " people in this room.";
     	return response + "\n";
     }
+    public boolean isPlayer1Here()
+	{
+    	Person[] peeps = getNpc();
+		for(int i = 0; i<peeps.length; i++)
+		{
+			if((peeps[i].getType()).equals("Player1"))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

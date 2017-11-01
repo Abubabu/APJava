@@ -12,25 +12,20 @@ public abstract class Person {
 	private int floor;
 	private Item[] item;
 	
-	public Person(String name,String type,Item item,int xcoord,int ycoord,int floor)
+	public Person(String name,String type,Item[] item)
 	{
 		this.name = name;
 		this.type = type;
-		this.item[0] = item;
-		this.xcoord = xcoord;
-		this.ycoord = ycoord;
-		this.floor = floor;
+		this.item = item;
 	}
-	//@overload
-	public Person(String name,String type,Item[] item, int xcoord, int ycoord, int floor)
-	{
+	public Person(String name, String type, Item[] item, int xcoord, int ycoord,int floor) {
 		this.name = name;
 		this.type = type;
 		this.item = item;
 		this.xcoord = xcoord;
 		this.ycoord = ycoord;
 		this.floor = floor;
-	}
+}
 	public Item getItem()
 	{
 		return item[0];

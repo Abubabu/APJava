@@ -1,6 +1,7 @@
 package game;
 import rooms.Room;
 import items.Item;
+import people.Civilian;
 import people.Person;
 import rooms.*;
 
@@ -24,15 +25,18 @@ public class GameRunner {
                 for (int i = 0; i<row.length;i++)
                 {
                     boolean[] doors = {true,true,true,true}; //N,E,S,W
-                    Person[] people = Utilities.getRandNpc(k,j,i);
-                    Item[] items = Utilities.getRandItem(k,j,i);
+                 //   Item[] items = {};
+               //     Person[] people = {new Civilian("its me","mario",items)}; // CIVS HAVE ITEMS, ROOMS HAVE ITEMS TOO , they are not the same
+                    Person[] people = Utilities.getRandCivs();
+                    Item[] items = Utilities.getRandItems();
                     if(i == 1 && j ==2)
                     {
                     	row[i] = new Bossroom(doors, people, items, i, j,k);  // (if fight with boss is won, you move up a floor)
                     }
                     else if(i == 1)
                     {
-                    	row[i] = new Hallway(doors, people, items, i, j,k);
+                    	Person[] noone = {};
+                    	row[i] = new Hallway(doors, noone, items, i, j,k);
                     }
                     else
                     {

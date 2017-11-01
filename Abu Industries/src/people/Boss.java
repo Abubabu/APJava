@@ -4,8 +4,8 @@ import items.Item;
 
 public class Boss extends Person {
 
-	public Boss(String name, String type, Item[] item, int xcoord, int ycoord, int floor) {
-		super(name, type, item, xcoord, ycoord,floor);
+	public Boss(String name, String type, Item[] item) {
+		super(name, type, item);
 		// TODO Auto-generated constructor stub
 	}
 	 public void print()

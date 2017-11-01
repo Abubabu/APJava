@@ -13,10 +13,10 @@ public class Hallway extends Room {
 
     public void print(int k, int j, int i)
     {
-        if (getNpc().length != 0)	//prints out pointer to player1
+        if (isPlayer1Here())	//prints out pointer to player1
         {
   //          System.out.print(getNpc()[0].print());
-        	System.out.print("[Player1]");
+        	System.out.print("[player1]");
         }
         else if (this.explored)
         {

@@ -9,7 +9,7 @@ import people.Player1;
 public class Utilities {
 	private static Item[] item;
 	public static Person createPerson() {
-		return new Player1("Sadman","Player",item,0,0,0);
+		return new Player1("Sadman","Player1",item,0,0,0);
 	}
 	public static Board movePlayer(Board abu, Person player1, int move) {
 		int[] location = player1.getLocation();
@@ -44,7 +44,7 @@ public class Utilities {
 		}
 		if(move == -2)	//West
 		{
-			if(location[1] >= 1)
+			if(location[0] >= 1)
 			{
 				player1.setLocation(location[0]-1, location[1]);
 				abu.getGamemap()[0][location[0]-1][location[1]].addNpc(player1);   
@@ -54,23 +54,25 @@ public class Utilities {
 		return abu;
 		
 	}
-	public static Person[] getRandNpc(int k ,int j, int i) {
-		int num = (int)Math.random()*4;
-		Person[] npc = new Person[num];
-		for(int z = 0; z < num; z++)
+	public static Person[] getRandCivs()
+	{
+		int rand = (int)Math.random()*4;
+		Person[] peeps = new Person[rand];
+		for(int i = 0; i < rand; i++)
 		{
-			npc[z] = new Civilian("John doe","Civilian",getRandItem(k,j,i)[0],i,j,k);
+			peeps[i] = new Civilian("XD","Yeet",getRandItems());  //GETS RAND ITEMS FOR THE PERSON
 		}
-		return null;
+		return peeps;
 	}
-	public static Item[] getRandItem(int k ,int j, int i) {
-		int num = (int)Math.random()*2;
-		Item[] npc = new Item[num];
-		for(int z = 0; z < num; z++)
+	public static Item[] getRandItems()		//USED TO GET RAND ITEMS FOUND IN THE ROOM
+	{
+		int rand = (int)Math.random()*3;
+		Item[] stuff = new Item[rand];
+		for(int i = 0; i < rand; i++)
 		{
-			npc[z] = new Item("weapon", "strong");
+			stuff[i] = new Item("XD","Yeet");
 		}
-		return null;
+		return stuff;
 	}
-
+	
 }
