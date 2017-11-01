@@ -56,7 +56,7 @@ public class Utilities {
 	}
 	public static Person[] getRandCivs()
 	{
-		int rand = (int)Math.random()*4;
+		int rand = (int)(Math.random()*4);
 		Person[] peeps = new Person[rand];
 		for(int i = 0; i < rand; i++)
 		{
@@ -66,13 +66,38 @@ public class Utilities {
 	}
 	public static Item[] getRandItems()		//USED TO GET RAND ITEMS FOUND IN THE ROOM
 	{
-		int rand = (int)Math.random()*3;
+		int rand = (int)(Math.random()*3);
 		Item[] stuff = new Item[rand];
 		for(int i = 0; i < rand; i++)
 		{
-			stuff[i] = new Item("XD","Yeet");
+			stuff[i] = new Item(getType(),getRandStrength());
 		}
 		return stuff;
+	}
+	public static int getRandStrength()
+	{
+		return (int)(Math.random()*100+1);
+	}
+	public static String getType()
+	{
+		String[] types = {"Sword","Axe","Spear","Gun"};
+		int num = (int)(Math.random()*101);
+		if(num > 33)
+		{
+			return types[0];
+		}
+		else if(num > 66)
+		{
+			return types[1];
+		}
+		else if(num > 99)
+		{
+			return types[2];
+		}
+		else
+		{
+			return types[3];
+		}
 	}
 	
 }

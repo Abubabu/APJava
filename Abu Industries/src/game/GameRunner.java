@@ -28,6 +28,7 @@ public class GameRunner {
                  //   Item[] items = {};
                //     Person[] people = {new Civilian("its me","mario",items)}; // CIVS HAVE ITEMS, ROOMS HAVE ITEMS TOO , they are not the same
                     Person[] people = Utilities.getRandCivs();
+                 
                     Item[] items = Utilities.getRandItems();
                     if(i == 1 && j ==2)
                     {

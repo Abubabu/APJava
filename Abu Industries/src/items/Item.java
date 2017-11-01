@@ -2,10 +2,10 @@ package items;
 
 public class Item {
 	private String type; 
-	private String strength;
+	private int strength;
 	
 	
-	public Item (String type, String strength)
+	public Item (String type, int strength)
 	{
 		this.type = type;
 		this.strength = strength;
@@ -14,9 +14,9 @@ public class Item {
 	{
 		return type;
 	}
-	public String getStrength()
+	public int getStrength()
 	{
 		return strength;
 	}
-
+	//Sword x Axe    Axe x Spear   Spear X Sword  The gun beast all 
 }

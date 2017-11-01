@@ -99,7 +99,7 @@ public class Room {
     		response += " and W";
     	}
     	response += "\n" + "there are " + this.getItems().length + " items in this room. ";
-    	response += "\n" + "there are " + this.getNpc().length + " people in this room.";
+    	response += "\n" + "there are " + this.getNpc().length + " people in this room. ";
     	return response + "\n";
     }
     public boolean isPlayer1Here()
