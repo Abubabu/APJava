@@ -5,52 +5,77 @@ import items.Item;
 import people.Civilian;
 import people.Person;
 import people.Player1;
+import rooms.Bossroom;
 
 public class Utilities {
-	private static Item[] item;
-	public static Person createPerson() {
-		return new Player1("Sadman","Player1",item,0,0,0);
+	public static Player1 createPerson(String name) {
+		Item[] item = {new Item("Sword",1)};
+		return new Player1(name,"Player1",item,0,0,0);
 	}
 	public static Board movePlayer(Board abu, Person player1, int move) {
 		int[] location = player1.getLocation();
+		if(move>=-2 && move <= 2)
+		{
+			abu.getGamemap()[player1.getFloor()][player1.getLocation()[0]][player1.getLocation()[1]].removeNpc();
+			abu.getGamemap()[player1.getFloor()][player1.getLocation()[0]][player1.getLocation()[1]].isExplored();
+			if(move == 1)   //North
+			{
+				if(location[1] <= 1)
+				{
+					player1.setLocation(location[0], location[1]+1);
+					abu.getGamemap()[player1.getFloor()][location[0]][location[1]+1].addNpc(player1);   
+					return abu;
+				}
+			}
+			if(move == -1)	//South
+			{
+				if(location[1] >= 1)
+				{
+					player1.setLocation(location[0], location[1]-1);
+					abu.getGamemap()[player1.getFloor()][location[0]][location[1]-1].addNpc(player1);   
+					return abu;
+				}
+			}
+			if(move == 2)	//East
+			{
+				if(location[0] <= 1)
+				{
+					player1.setLocation(location[0]+1, location[1]);
+					abu.getGamemap()[player1.getFloor()][location[0]+1][location[1]].addNpc(player1);   
+					return abu;
+				}
+			}
+			if(move == -2)	//West
+			{
+				if(location[0] >= 1)
+				{
+					player1.setLocation(location[0]-1, location[1]);
+					abu.getGamemap()[player1.getFloor()][location[0]-1][location[1]].addNpc(player1);   
+					return abu;
+				}
+			}
+		}
+		if(move == 3)	
+		{
+			Item.print(abu.getGamemap()[player1.getFloor()][player1.getLocation()[0]][player1.getLocation()[1]].getItems());
+			player1.swapWeapon();
+				return abu;
+			
+		}
+		if(move == -3)	
+		{
+			Civilian.print(player1.getFloor());
+				return abu;
+			
+		}
+		return abu;
+		
+	}
+	public static Board movePlayerFloor(Board abu, Person player1, int move) {
 		abu.getGamemap()[player1.getFloor()][player1.getLocation()[0]][player1.getLocation()[1]].removeNpc();
 		abu.getGamemap()[player1.getFloor()][player1.getLocation()[0]][player1.getLocation()[1]].isExplored();
-	if(move == 1)   //North
-		{
-			if(location[1] <= 1)
-			{
-				player1.setLocation(location[0], location[1]+1);
-				abu.getGamemap()[0][location[0]][location[1]+1].addNpc(player1);   
-				return abu;
-			}
-		}
-		if(move == -1)	//South
-		{
-			if(location[1] >= 1)
-			{
-				player1.setLocation(location[0], location[1]-1);
-				abu.getGamemap()[0][location[0]][location[1]-1].addNpc(player1);   
-				return abu;
-			}
-		}
-		if(move == 2)	//East
-		{
-			if(location[0] <= 1)
-			{
-				player1.setLocation(location[0]+1, location[1]);
-				abu.getGamemap()[0][location[0]+1][location[1]].addNpc(player1);   
-				return abu;
-			}
-		}
-		if(move == -2)	//West
-		{
-			if(location[0] >= 1)
-			{
-				player1.setLocation(location[0]-1, location[1]);
-				abu.getGamemap()[0][location[0]-1][location[1]].addNpc(player1);   
-				return abu;
-			}
-		}
+		player1.setLocation(move,0,0);
+		abu.getGamemap()[move][0][0].addNpc(player1);   
 		return abu;
 		
 	}
@@ -82,15 +107,15 @@ public class Utilities {
 	{
 		String[] types = {"Sword","Axe","Spear","Gun"};
 		int num = (int)(Math.random()*101);
-		if(num > 33)
+		if(num < 33)
 		{
 			return types[0];
 		}
-		else if(num > 66)
+		else if(num < 66)
 		{
 			return types[1];
 		}
-		else if(num > 99)
+		else if(num < 95)
 		{
 			return types[2];
 		}
@@ -98,6 +123,13 @@ public class Utilities {
 		{
 			return types[3];
 		}
+	}
+	public static int bossTrigger(Player1 player1) {
+		if(player1.getLocation()[0]== 2 && player1.getLocation()[1] == 1 )
+		{
+			return Bossroom.bossfight(player1);
+		}
+		return 3;
 	}
 	
 }

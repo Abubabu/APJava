@@ -62,28 +62,39 @@ public abstract class Person {
 		this.xcoord = xcoord;
 		this.ycoord = ycoord;
 	}
-	public int chooseMove()
-	{
+	public void swapWeapon() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Type which direction you would like to go in.");                            //Chatbot's greeting/opening message
-        String statement = input.nextLine();
-        if(statement.equals("N"))
-        {
-        	return 1;
-        }
-        if(statement.equals("S"))
-        {
-        	return -1;
-        }
-        if(statement.equals("E"))
-        {
-        	return 2;
-        }
-        if(statement.equals("W"))
-        {
-        	return -2;
-        }
-        return 27;
+		String statement = input.nextLine();
+		if(statement.equals("Yes"))
+		{
+			System.out.println("Type in the type of the weapon you want to swap to");
+			statement = input.nextLine();
+			while(!isFound(statement))
+			{
+				System.out.println("please type in a proper weapon type");
+				statement = input.nextLine();
+			}
+			String type = statement;
+			System.out.println("Now type in the strength of that weapon");
+			statement = input.nextLine();
+			int strength = Integer.parseInt(statement);
+			Item[] item = {new Item(type,strength)};
+			this.item = item;
+			System.out.println("Your weapon has been swapped");
+			
+		}
+		
 	}
-	public abstract void print();
+	private boolean isFound(String statement) {
+		String[] types = {"Sword","Axe","Spear","Gun"};
+		for(String a : types)
+		{
+			if(a.equals(statement))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

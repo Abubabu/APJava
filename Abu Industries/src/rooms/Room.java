@@ -1,5 +1,6 @@
 package rooms;
 
+import people.Boss;
 import people.Person;
 import items.Item;
 
@@ -12,6 +13,7 @@ public class Room {
     private Item[] items;
     public boolean explored;
     private int x, y, k;
+    private Boss[] boss;
 
     public Room(boolean[] doors, Person[] npc, Item[] items, int x, int y, int k)
     {
@@ -19,6 +21,17 @@ public class Room {
     	this.y = y;
     	this.k = k;
         this.doors = doors;
+        this.npc = npc;
+        this.items = items;
+        this.explored = false;
+    }
+    public Room(boolean[] doors, Boss[] boss,Person[] npc, Item[] items, int x, int y, int k)
+    {
+    	this.x = x;
+    	this.y = y;
+    	this.k = k;
+        this.doors = doors;
+        this.boss = boss;
         this.npc = npc;
         this.items = items;
         this.explored = false;
@@ -52,6 +65,11 @@ public class Room {
     {
     	return y;
     }
+    public int[] getLocation()
+	{
+		int[] buf = {x,y};
+		return buf;
+	}
     public Item[] getItems()
     {
     	return items;
@@ -66,7 +84,7 @@ public class Room {
     	 if (isPlayer1Here())	//prints out pointer to player1
          {
    //          System.out.print(getNpc()[0].print());
-         	System.out.print("[player1]");
+         	System.out.print("[YOU]");
          }
         else if (this.explored)
         {
@@ -74,7 +92,8 @@ public class Room {
         }
         else
         {
-            System.out.print("["+ k + j + i + "R]");
+           // System.out.print("["+ k + j + i + "R]");
+        	System.out.print("[ROOM]");
         }
 
     }	
@@ -84,22 +103,32 @@ public class Room {
     	String response = "This is a Room. It has doors to the ";
     	if (doors[0])
     	{
-    		response += "N";
+    		response += " N";
     	}
     	
     	if(doors[1]) {
-    		response += " and E";
+    		response += " E";
     	}
     	
     	if (doors[2]) {
-    		response += " and S";
+    		response += " S";
     	}
     	
     	if (doors[3]) {
-    		response += " and W";
+    		response += " W";
     	}
     	response += "\n" + "there are " + this.getItems().length + " items in this room. ";
     	response += "\n" + "there are " + this.getNpc().length + " people in this room. ";
+    	response += "\n You can do the folllowing: ";
+    	if(this.getItems().length >0)
+    	{
+    		response += "Take items, ";
+    	}
+    	if(this.getNpc().length >1)
+    	{
+    		response += "Talk to the people, ";
+    	}
+    	response += "or move to another room.";
     	return response + "\n";
     }
     public boolean isPlayer1Here()

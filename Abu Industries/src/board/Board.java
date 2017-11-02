@@ -33,6 +33,7 @@ public class Board {
                  System.out.println();
 
              }
+         	System.out.println("--------------------------------------------------------");
          }
       /*  for(Room[][] floor : abuIndustries)
         {

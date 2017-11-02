@@ -18,5 +18,15 @@ public class Item {
 	{
 		return strength;
 	}
-	//Sword x Axe    Axe x Spear   Spear X Sword  The gun beast all 
+	public static void print(Item[] items)
+	{
+		String response = "In this room, there is ";
+		for(Item a : items)
+		{
+			response += "a " + a.getType()+ " with " + a.getStrength() + " strength, \n";
+		}
+		response += "\n Would you like to swap your weapon? ";
+		System.out.println(response);
+	}
+	//Sword x Axe    Axe x Spear   Spear X Sword  The gun beats all 
 }

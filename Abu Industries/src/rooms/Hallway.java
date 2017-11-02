@@ -16,7 +16,7 @@ public class Hallway extends Room {
         if (isPlayer1Here())	//prints out pointer to player1
         {
   //          System.out.print(getNpc()[0].print());
-        	System.out.print("[player1]");
+        	System.out.print("[YOU]");
         }
         else if (this.explored)
         {
@@ -24,7 +24,8 @@ public class Hallway extends Room {
         }
         else
         {
-            System.out.print("["+ k + j + i + "H]");
+            //System.out.print("["+ k + j + i + "H]");
+        	System.out.print("[HALL]");
         }
 
     }	
@@ -52,19 +53,19 @@ public class Hallway extends Room {
     	String response = "This is a hallway. It has doors to the ";
     	if (doors[0])
     	{
-    		response += "N";
+    		response += " N";
     	}
     	
     	if(doors[1]) {
-    		response += " and E";
+    		response += " E";
     	}
     	
     	if (doors[2]) {
-    		response += " and S";
+    		response += " S";
     	}
     	
     	if (doors[3]) {
-    		response += " and W";
+    		response += " W";
     	}
     	
     	return response + "\n";
