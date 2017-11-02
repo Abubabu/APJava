@@ -22,7 +22,7 @@ public class Player1 extends Person{
 		Room room = abu.getGamemap()[getFloor()][getLocation()[0]][getLocation()[1]];
 		boolean[] rooms = abu.getGamemap()[getFloor()][getLocation()[0]][getLocation()[1]].getDoors();
 		Scanner input = new Scanner(System.in);
-		System.out.println("Type what you would like to do.");                            //Chatbot's greeting/opening message
+		System.out.println("Type what you want to do.");                            //Chatbot's greeting/opening message
         String statement = input.nextLine();
         if(statement.equals("N")&& (y!=2) && rooms[0])
         {

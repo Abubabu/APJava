@@ -105,7 +105,7 @@ public class GameRunner {
         map[0][0][0].addNpc(player1);
         System.out.println();
         Abu.printMap();
-        player1.print();
+        System.out.println("Keywords for the console: N(move north), S(move south), E(move east), W(move west), Take(take items), Talk(talk to npc).\nThe map is turned 90 degrees clockwise, North is actually east, East is south, South is west, and West is north");
         while(gameOn)
         {
             int move = player1.chooseMove(Abu);

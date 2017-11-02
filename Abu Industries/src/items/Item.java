@@ -1,6 +1,6 @@
 package items;
 
-public class Item {
+public class Item implements items{
 	private String type; 
 	private int strength;
 	
