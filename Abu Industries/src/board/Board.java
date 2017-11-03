@@ -9,12 +9,18 @@ public class Board {
 
 
     private Room[][][] abuIndustries;
+    private int floor;
 
 
 
     public Board(Room[][][] abuIndustries)
     {
         this.abuIndustries = abuIndustries;
+    }
+    public Board(Room[][] abuIndustries,int floor)
+    {	this.abuIndustries = new Room[0][3][3];
+        this.abuIndustries[0] = abuIndustries;
+        this.floor = floor;
     }
 
     public void printMap()
