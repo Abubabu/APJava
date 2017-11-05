@@ -1,8 +1,5 @@
 package board;
 
-import items.Item;
-import people.Person;
-import rooms.Hallway;
 import rooms.Room;
 
 public class Board {
@@ -17,6 +14,7 @@ public class Board {
     {
         this.abuIndustries = abuIndustries;
     }
+    //@Overloaded
     public Board(Room[][] abuIndustries,int floor)
     {	this.abuIndustries = new Room[0][3][3];
         this.abuIndustries[0] = abuIndustries;
@@ -25,9 +23,9 @@ public class Board {
 
     public void printMap()
     {
-
-    	 for(int k = 0; k<abuIndustries.length; k++)
+    	 for(int k = 0; k<abuIndustries.length; k++)		//Calls the print function on every room in the board
          {
+    		 System.out.println("Floor " + (k+1)+ ":");
          	Room[][] floor = abuIndustries[k];
          	for (int j = 0; j<floor.length; j++)
              {
@@ -41,26 +39,11 @@ public class Board {
              }
          	System.out.println("--------------------------------------------------------");
          }
-      /*  for(Room[][] floor : abuIndustries)
-        {
-            for (Room[] row : floor)
-            {
-            	 for (Room room : row)
-                 {
-                     room.print();
-                 }
-            	 System.out.println();
-            }
-           
-        }	*/
     }
     public Room[][][] getGamemap() {
         return abuIndustries;
     }
-
     public void setGamemap(Room[][][] abuIndustries) {
         this.abuIndustries = abuIndustries;
     }
-
-
 }

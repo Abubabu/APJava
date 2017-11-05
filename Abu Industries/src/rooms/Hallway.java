@@ -13,9 +13,8 @@ public class Hallway extends Room {
 
     public void print(int k, int j, int i)
     {
-        if (isPlayer1Here())	//prints out pointer to player1
+        if (isPlayer1Here())	
         {
-  //          System.out.print(getNpc()[0].print());
         	System.out.print("[YOU]");
         }
         else if (this.explored)
@@ -24,48 +23,29 @@ public class Hallway extends Room {
         }
         else
         {
-            //System.out.print("["+ k + j + i + "H]");
-        	System.out.print("[HALL]");
+        	System.out.print("[HALL]"); 
         }
 
     }	
- /*   public void print()
-    {
-        if (getNpc().length != 0)
-        {
-  //          System.out.print(getNpc()[0].print());
-        	System.out.print(getNpc()[0]);
-        }
-        else if (this.explored)
-        {
-            System.out.print("[E]");
-        }
-        else
-        {
-            System.out.print("[ ]");
-        }
-
-    }	*/
-    
     public String toString()
     {
     	boolean[] doors = this.getDoors();
-    	String response = "This is a hallway. It has doors to the ";
+    	String response = "This is a hallway. It has doors to the";
     	if (doors[0])
     	{
-    		response += " N";
-    	}
-    	
-    	if(doors[1]) {
     		response += " E";
     	}
     	
-    	if (doors[2]) {
+    	if(doors[1]) {
     		response += " S";
     	}
     	
-    	if (doors[3]) {
+    	if (doors[2]) {
     		response += " W";
+    	}
+    	
+    	if (doors[3]) {
+    		response += " N";
     	}
     	
     	return response + "\n";

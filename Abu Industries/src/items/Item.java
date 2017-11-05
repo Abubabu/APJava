@@ -4,7 +4,6 @@ public class Item implements items{
 	private String type; 
 	private int strength;
 	
-	
 	public Item (String type, int strength)
 	{
 		this.type = type;
@@ -20,13 +19,28 @@ public class Item implements items{
 	}
 	public static void print(Item[] items)
 	{
-		String response = "In this room, there is ";
-		for(Item a : items)
+		String response;
+		if(items.length == 1)
 		{
-			response += "a " + a.getType()+ " with " + a.getStrength() + " strength, \n";
+			response = "There is only one weapon here, " + sentenceFormatter(items[0].getType()) + " with " + items[0].getStrength() + " strength.";
+		}
+		else
+		{
+			response = "There are many weapons here \n";
+			for(int i = 0; i < items.length; i++)
+			{
+				response += (i+1) + ": " + sentenceFormatter(items[i].getType()) + " with " + items[i].getStrength() + " strength\n";
+			}
 		}
 		response += "\n Would you like to swap your weapon? ";
 		System.out.println(response);
 	}
-	//Sword x Axe    Axe x Spear   Spear X Sword  The gun beats all 
+	public static String sentenceFormatter(String x)
+	{
+		if(x.equals("Axe"))
+		{
+			return "an " + x;
+		}
+		return "a " + x; 	
+	}
 }

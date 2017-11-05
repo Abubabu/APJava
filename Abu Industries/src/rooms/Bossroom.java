@@ -11,26 +11,22 @@ public class Bossroom extends Room {
     {
         super(doors, people,npc, items, x, y,k);
     }
-
     public void print(int k, int j, int i)
     {
-    	if (isPlayer1Here())	//prints out pointer to player1
+    	if (isPlayer1Here())	
         {
-  //          System.out.print(getNpc()[0].print());
         	System.out.print("[YOU]");
         }
-       else if (this.explored)
-       {
-           System.out.print("[E]");
-       }
-       else
-       {
-          // System.out.print("["+ k + j + i + "B]");
+        else if (this.explored)
+        {
+            System.out.print("[E]");
+        }
+        else
+        {
     	   System.out.print("[BOSS]");
-       }
-
+        }
     }	
-    public static int bossfight(Player1 player1)
+    public static int bossfight(Player1 player1) 
     {
     	int floor = player1.getFloor();
         String[] text = {
@@ -47,7 +43,12 @@ public class Bossroom extends Room {
         		System.out.println("The Rock has killed you, better luck next time!");
         		return 0;
         	}
-        	System.out.println("You have defeated The Rock! Time to find our next target.");
+        	System.out.println("You have defeated The Rock! Time to find our next target.\n");
+        	try {
+				Thread.sleep(4000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
         	return 1;
         }
         if(floor == 1)
@@ -59,7 +60,12 @@ public class Bossroom extends Room {
         		System.out.println("LEEEEEEEEROYYYY has killed you, better luck next time!");
         		return 0;
         	}
-        	System.out.println("You have defeated LEEEEEEEEROYYYY! Time to find our final target.");
+        	System.out.println("You have defeated LEEEEEEEEROYYYY! Time to find our final target.\n");
+        	try {
+				Thread.sleep(4000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
         	return 2;
         }
         if(floor == 2)
@@ -71,30 +77,12 @@ public class Bossroom extends Room {
         		System.out.println("Steve Jobs has killed you, better luck next time!");
         		return 0;
         	}
-        	System.out.println("You have defeated Steve Jobs! Congrats, you have taken over Abu Industries!");
-        	System.out.println("THE END");
+        	System.out.println("You have defeated Steve Jobs!\nCongrats, you have taken over Abu Industries!");
+        	System.out.println("Thanks For Playing");
         	return 0;
         }
         return 0;
     }	
- /*   public void print()
-    {
-        if (getNpc().length != 0)
-        {
-  //          System.out.print(getNpc()[0].print());
-        	System.out.print(getNpc()[0]);
-        }
-        else if (this.explored)
-        {
-            System.out.print("[E]");
-        }
-        else
-        {
-            System.out.print("[ ]");
-        }
-
-    }	*/
-
 	private static boolean damageCheck(Player1 player1,int strength, String type) {
 		int playerStrength = player1.getItems()[0].getStrength();
 		String playerType = player1.getItems()[0].getType();
@@ -122,22 +110,18 @@ public class Bossroom extends Room {
 		{
 			playerStrength = playerStrength - 10;
 		}
-		if(playerType.equals("Gun"))
+		if(playerType.equals("Gun"))		//Sword > Axe    Axe > Spear   Spear > Sword   Gun beats all 
 		{
 			return false;
 		}
-		if(playerStrength > strength)
+		
+		if(playerStrength > strength) //checks who is stronger after strength adjustments
 		{
 			return false;
 		}
 		else
 		{
 			return true;
-		}
-		
-		
+		}	
 	}
-    
-   
-
 }

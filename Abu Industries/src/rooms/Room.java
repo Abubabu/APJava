@@ -7,7 +7,6 @@ import items.Item;
 import java.util.Arrays;
 
 public class Room {
-
     private boolean[] doors;
     private Person[] npc;
     private Item[] items;
@@ -25,6 +24,7 @@ public class Room {
         this.items = items;
         this.explored = false;
     }
+    //Overloaded
     public Room(boolean[] doors, Boss[] boss,Person[] npc, Item[] items, int x, int y, int k)
     {
     	this.x = x;
@@ -44,7 +44,7 @@ public class Room {
     }
     public void removeNpc()
     {
-    	this.npc = Arrays.copyOf(this.npc,this.npc.length-1);
+    	this.npc = Arrays.copyOf(this.npc,this.npc.length-1); //player1 is always the last person in the array
     }
     public void addNpc(Person p)
     {
@@ -55,12 +55,10 @@ public class Room {
     {
     	return doors;
     }
-    
     public int getX()
     {
     	return x;
     }
-    
     public int getY()
     {
     	return y;
@@ -74,16 +72,39 @@ public class Room {
     {
     	return items;
     }
+    public void removeItemAtIndex(int x)
+	{
+		if(x == 0)
+		{	
+			System.out.println("1");
+			Item[] items = new Item[0];
+			System.out.println(items.length);
+			this.items = items;
+		}
+		else
+		{
+			Item[] items = new Item[this.items.length-1];
+			int alt = 0;
+			for(int i = 0; i < this.items.length-1; i++)
+			{
+				if(i == (x-1))
+				{
+					continue;
+				}
+				items[alt] = this.items[i];
+				alt++;
+			}
+			this.items = items;
+		}
+	}
     public void isExplored()
     {
     	this.explored = true;
     }
-  //  public abstract void print(int k, int j, int i);
     public void print(int k, int j, int i)
     {
-    	 if (isPlayer1Here())	//prints out pointer to player1
+    	 if (isPlayer1Here())	
          {
-   //          System.out.print(getNpc()[0].print());
          	System.out.print("[YOU]");
          }
         else if (this.explored)
@@ -92,7 +113,6 @@ public class Room {
         }
         else
         {
-           // System.out.print("["+ k + j + i + "R]");
         	System.out.print("[ROOM]");
         }
 
@@ -100,35 +120,25 @@ public class Room {
     public String toString()
     {
     	boolean[] doors = this.getDoors();
-    	String response = "This is a Room. It has doors to the ";
+    	String response = "This is a Room. It has doors to the";
     	if (doors[0])
     	{
-    		response += " N";
-    	}
-    	
-    	if(doors[1]) {
     		response += " E";
     	}
     	
-    	if (doors[2]) {
+    	if(doors[1]) {
     		response += " S";
     	}
     	
-    	if (doors[3]) {
+    	if (doors[2]) {
     		response += " W";
     	}
+    	
+    	if (doors[3]) {
+    		response += " N";
+    	}
     	response += "\n" + "there are " + this.getItems().length + " items in this room. ";
-    	response += "\n" + "there are " + this.getNpc().length + " people in this room. ";
-    	response += "\n You can do the folllowing: ";
-    	if(this.getItems().length >0)
-    	{
-    		response += "Take items, ";
-    	}
-    	if(this.getNpc().length >1)
-    	{
-    		response += "Talk to the people, ";
-    	}
-    	response += "or move to another room.";
+    	response += "\n" + "there are " + (this.getNpc().length-1) + " other people in this room. ";
     	return response + "\n";
     }
     public boolean isPlayer1Here()

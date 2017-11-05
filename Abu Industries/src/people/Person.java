@@ -3,6 +3,7 @@ package people;
 import java.util.Scanner;
 
 import items.Item;
+import rooms.Room;
 
 public abstract class Person {
 	private String name;
@@ -18,17 +19,15 @@ public abstract class Person {
 		this.type = type;
 		this.item = item;
 	}
-	public Person(String name, String type, Item[] item, int xcoord, int ycoord,int floor) {
+	//Overloaded
+	public Person(String name, String type, Item[] item, int xcoord, int ycoord,int floor) 
+	{
 		this.name = name;
 		this.type = type;
 		this.item = item;
 		this.xcoord = xcoord;
 		this.ycoord = ycoord;
 		this.floor = floor;
-}
-	public Item getItem()
-	{
-		return item[0];
 	}
 	public Item[] getItems()
 	{
@@ -62,39 +61,42 @@ public abstract class Person {
 		this.xcoord = xcoord;
 		this.ycoord = ycoord;
 	}
-	public void swapWeapon() {
+	public int swapWeapon(Room room) {
+		Item[] items = room.getItems();
 		Scanner input = new Scanner(System.in);
 		String statement = input.nextLine();
-		if(statement.equals("Yes"))
+		if(statement.equals("Yes")||statement.equals("yes"))
 		{
-			System.out.println("Type in the type of the weapon you want to swap to");
-			statement = input.nextLine();
-			while(!isFound(statement))
+			if(items.length == 1)
 			{
-				System.out.println("please type in a proper weapon type");
+				Item[] item = {new Item(items[0].getType(),items[0].getStrength())};
+				this.item = item;
+				System.out.println("You have taken the weapon\n");
+				try {
+					Thread.sleep(1200);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				return 0;
+			}
+			System.out.println("Type the number of the weapon you want to swap to");
+			statement = input.nextLine();
+			int index = Integer.parseInt(statement);
+			while(index < 1 || index > items.length)
+			{
+				System.out.println("type in a valid number");
 				statement = input.nextLine();
 			}
-			String type = statement;
-			System.out.println("Now type in the strength of that weapon");
-			statement = input.nextLine();
-			int strength = Integer.parseInt(statement);
-			Item[] item = {new Item(type,strength)};
+			Item[] item = {new Item(items[index-1].getType(),items[index-1].getStrength())};
 			this.item = item;
-			System.out.println("Your weapon has been swapped");
-			
-		}
-		
-	}
-	private boolean isFound(String statement) {
-		String[] types = {"Sword","Axe","Spear","Gun"};
-		for(String a : types)
-		{
-			if(a.equals(statement))
-			{
-				return true;
+			System.out.println("You have taken the weapon\n");
+			try {
+				Thread.sleep(1200);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
+			return index;
 		}
-		return false;
-	}
-	
+		return 27;
+	}	
 }
