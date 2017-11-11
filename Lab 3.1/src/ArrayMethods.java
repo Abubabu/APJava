@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 
 public class ArrayMethods {
 
@@ -8,9 +7,30 @@ public class ArrayMethods {
 		
 		for(int i = 0; i <  removeDuplicates(yes).length-1; i++)
 		{
-			System.out.println( removeDuplicates(yes)[i]);
+			System.out.println( removeDuplicates(yes)[i]); //Test removeDuplicate function
 		}
-	
+		
+		int[] test = {1,2,3};
+		int[] test1 = {1,2,3};
+		int[][] answer = productArray(test,test1);
+		for(int i = 0; i < test.length; i++)
+		{
+			for(int j = 0; j < test1.length; j++)
+			{
+				System.out.print(answer[i][j]);	//Test productArray function
+			}
+			System.out.println();
+		}
+		int[][] result = pascalTriangle(8);
+		for (int[] x : result)
+		{
+		   for (int y : x)
+		   {
+		        System.out.print(y + " "); //Test pascalTriangle function
+		   }
+		   System.out.println();
+		}
+		printPascalTriangle(result);	//Test printPascalTriangle function
 	}
 	public static int[ ] removeDuplicates(int[ ] org)
 	{
@@ -38,11 +58,6 @@ public class ArrayMethods {
 			}
 		}
 		int[] finalCopy = new int[org.length-count];
-	/*	for(int i = 0; i <  finalCopy.length-1; i++)
-		{
-			System.out.println( finalCopy[i]);
-		}*/
-	//	System.out.println("------------------------------------------------");
 		int secondcount = 0;
 		while(x < finalCopy.length)
 		{
@@ -57,11 +72,73 @@ public class ArrayMethods {
 		}
 		return finalCopy;
 	}
-	
-	
-	
-	
-	public static int[] copyArray(int[] intArray)
+	public static int[][] productArray(int[] row,int[] col)
+	{
+		int[][] result = new int[row.length][col.length];
+		for(int i = 0; i < row.length; i++)//Row
+		{
+			int[] loop = new int[row.length];
+			for(int j = 0; j < row.length; j++)//col
+			{
+				loop[j] = row[i]*col[j];
+			}
+			result[i] = loop;
+		}
+		return result;
+	}
+	public static int[][] pascalTriangle(int num)
+	{
+		if(num == 1)
+		{
+			int[][] one= {{1}};
+			return one;
+		}
+		int[][] pascal = new int[num][];
+		int[] lastRow = {1};
+		for(int i = 0; i < num; i++)
+		{
+			
+			int[] loop = new int[i+1];
+			loop[0] = 1;
+			loop[loop.length-1] = 1;
+			for(int j = 1; j< loop.length-1; j++)
+			{
+				loop[j] = lastRow[j] + lastRow[j-1];
+			}
+			pascal[i] = loop;
+			lastRow = loop;
+		}
+		return pascal;
+	}
+	public static void printPascalTriangle(int[][] pTriangle)
+	{
+		int lastRowVal = (pTriangle[pTriangle.length-1].length);
+		for(int i = 0; i < pTriangle.length-1;i++)
+		{
+			int index = lastRowVal - pTriangle[i].length;
+			for(int k = 0; k < index; k++)
+			{
+				System.out.print(" ");
+			}
+			for(int j = 0; j <= pTriangle[i].length-1; j++)
+			{
+				if(j == pTriangle[i].length-1 )
+				{
+					System.out.print(pTriangle[i][j]);
+				}
+				else
+				{
+				System.out.print(pTriangle[i][j]+ " ");
+				}
+			}
+			for(int k = 0; k < index; k++)
+			{
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
+	}
+	public static int[] copyArray(int[] intArray) //Helper function
 	{
 		int[] copy = new int[intArray.length];
 		for(int i = 0; i< intArray.length; i++)
