@@ -10,8 +10,8 @@ public class ArrayMethods {
 			System.out.println( removeDuplicates(yes)[i]); //Test removeDuplicate function
 		}
 		
-		int[] test = {1,2,3};
-		int[] test1 = {1,2,3};
+		int[] test = {1,2,4};
+		int[] test1 = {1,2,4};
 		int[][] answer = productArray(test,test1);
 		for(int i = 0; i < test.length; i++)
 		{
