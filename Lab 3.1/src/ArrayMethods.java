@@ -1,6 +1,6 @@
 
 public class ArrayMethods {
- 
+
 	public static void main(String[] args)
 	{
 		int[] yes = {0,1,2,3,3,4,1,3,4,4,1};
