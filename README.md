@@ -1,2 +1,2 @@
 # APJava
-Place to sync classwork and homework
+Place to store work
