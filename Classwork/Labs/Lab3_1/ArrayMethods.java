@@ -1,3 +1,4 @@
+package Lab3_1;
 
 public class ArrayMethods {
   
@@ -148,3 +149,4 @@ public class ArrayMethods {
 		return copy;
 	}
 }
+
