@@ -8,7 +8,7 @@ public class ArrayMethods2 {
 		String[] three = {"Ball", "coconut", "Potato", "Lamp","Plant"};
 		String[] test1 = merge(one,two);
 		//String[] test2 = merge(one,three);
-		//String[] test3 = merge(two,three);
+		//String[] test3 = merge(two,three); 
 		for (String x : test1)
 		{
 		   System.out.print(x);
