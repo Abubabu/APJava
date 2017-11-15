@@ -25,11 +25,11 @@ public class ArrayMethods2 {
 		{
 		   System.out.print(x+" ");
 		}
-		System.out.println("\n---------------------------------------------------------\n");
+		System.out.println("\n---------------------------------------------------------\n"); 
 		
 		String[] four = {"Vanesa","Apple","Potato","Denver", "Apple","Pistol", "Tree"};
 		String[] five = {"Coconut","Ball", "Lamp","Coconut", "Potato", "Vanesa"};
-		String[] six = {"Potato","Coconut","Ball", "Coconut", "Potato","Lamp","Plant","Potato"};
+		String[] six = {"Potato","Coconut","Ball", "Coconut", "Potato","Lamp","Plant","Potato"}; 
 		String[] test4 = mergeSort(four);
 		String[] test5 = mergeSort(five);
 		String[] test6 = mergeSort(six);
@@ -61,6 +61,33 @@ public class ArrayMethods2 {
 		System.out.print(test8+" ");
 		System.out.println();
 		System.out.print(test9+" ");
+		
+		System.out.println("\n---------------------------------------------------------\n");
+		
+		
+		String[] testTime = {"Vanesa","Apple","Potato","Denver", "Apple","Pistol", "Tree"};
+		long avg = 0;
+		long avg2 = 0;
+		for(int i = 0; i < 10000; i++)
+		{
+			long startime  = System.nanoTime();
+			Arrays.sort(testTime);
+			long endtime = System.nanoTime();
+			long finalTime = endtime - startime;
+			avg += finalTime;
+		}
+		System.out.print("it took " + avg/10000+"\n");
+		for(int i = 0; i < 10000; i++)
+		{
+			long startime  = System.nanoTime();
+			String[] test = mergeSort(testTime);
+			long endtime = System.nanoTime();
+			long finalTime = endtime - startime;
+			avg2 += finalTime;
+		}
+		System.out.print("it took " + avg2/10000+"\n");
+		// the times for array.sort ; 429
+		// the times for mergesort 14262
 	}
 	public static String[] merge(String[] list1, String[] list2)
 	{
@@ -114,10 +141,10 @@ public class ArrayMethods2 {
 		}
 		else
 		{
-			int half = ((int)list.length/2 );
+			int half = (list.length/2 );
 			String[] oneHalf = Arrays.copyOfRange(list, 0, half);
 			String[] otherHalf = Arrays.copyOfRange(list, half, list.length);
-			return merge(  mergeSort( oneHalf ), mergeSort( otherHalf)  );		
+			return merge(  mergeSort( oneHalf ), mergeSort( otherHalf));		
 		}
 	}
 	public static int partition(int[] list)
