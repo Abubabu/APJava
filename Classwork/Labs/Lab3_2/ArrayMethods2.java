@@ -55,6 +55,7 @@ public class ArrayMethods2 {
 		int test7 = partition(seven);
 		int test8 = partition(eight);
 		int test9 = partition(nine);
+		
 		System.out.print(test7+" ");
 		System.out.println();
 		System.out.print(test8+" ");
