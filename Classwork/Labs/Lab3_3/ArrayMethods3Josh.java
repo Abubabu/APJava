@@ -51,8 +51,27 @@ public class ArrayMethods3Josh {
 		}
 	}
 	
+	public static void selectionSort(double[] array) {
+		for(int i = 0; i < array.length - 1; i++) {
+			int smallest = i;
+			for(int j = i + 1; j < array.length; j++) {
+				if(array[j] < array[smallest]) {
+					j = smallest;
+				}
+				if(j == array.length - 1)
+					swapDoubleArray(array,i,j);
+			}
+		}
+	}
+	
 	public static void swapStringArray(String[] array, int i, int j) {
 		String temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+	
+	public static void swapDoubleArray(double[] array, int i, int j) {
+		double temp = array[i];
 		array[i] = array[j];
 		array[j] = temp;
 	}
