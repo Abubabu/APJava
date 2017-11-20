@@ -2,10 +2,28 @@ package Lab3_3;
 
 public class ArrayMethods3Josh {
 	public static void main(String[] args) {
-		String[] potato = {"potato","potato","potato","apple"};
+		String[] potato = {"apples","potato","potato","apple"};
+		String[] potato1 = {"banana","block","red","apple"};
+		String[] potato2 = {"reddit","zole","apple","apple"};
+		String[] potato3 = {"panana","fale","recall","pole"};
 		bubbleSort(potato);
 		for(int i = 0; i < potato.length;i++) {
-			System.out.println(potato[i] + " ");
+			System.out.print(potato[i] + " ");
+		}
+		System.out.println();
+		bubbleSort(potato1);
+		for(int i = 0; i < potato1.length;i++) {
+			System.out.print(potato1[i] + " ");
+		}
+		System.out.println();
+		bubbleSort(potato2);
+		for(int i = 0; i < potato2.length;i++) {
+			System.out.print(potato2[i] + " ");
+		}
+		System.out.println();
+		bubbleSort(potato3);
+		for(int i = 0; i < potato3.length;i++) {
+			System.out.print(potato3[i] + " ");
 		}
 	}
 	
