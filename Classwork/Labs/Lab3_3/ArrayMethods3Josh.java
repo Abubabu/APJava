@@ -2,7 +2,7 @@ package Lab3_3;
 
 public class ArrayMethods3Josh {
 	public static void main(String[] args) {
-		String[] potato = {"apples","potato","potato","apple"};
+		/*String[] potato = {"apples","potato","potato","apple"};
 		String[] potato1 = {"banana","block","red","apple"};
 		String[] potato2 = {"reddit","zole","apple","apple"};
 		String[] potato3 = {"panana","fale","recall","pole"};
@@ -22,6 +22,29 @@ public class ArrayMethods3Josh {
 		}
 		System.out.println();
 		bubbleSort(potato3);
+		for(int i = 0; i < potato3.length;i++) {
+			System.out.print(potato3[i] + " ");
+		}*/
+		double[] potato = {2.5,1.2};
+		double[] potato1 = {3.5,1.1,2.7,2.7,5.7};
+		double[] potato2 = {3.0,2.0,1.0,1.0};
+		double[] potato3 = {3.0,2.0,1.0,1.0};
+		selectionSort(potato);
+		for(int i = 0; i < potato.length;i++) {
+			System.out.print(potato[i] + " ");
+		}
+		System.out.println();
+		selectionSort(potato1);
+		for(int i = 0; i < potato1.length;i++) {
+			System.out.print(potato1[i] + " ");
+		}
+		System.out.println();
+		selectionSort(potato2);
+		for(int i = 0; i < potato2.length;i++) {
+			System.out.print(potato2[i] + " ");
+		}
+		System.out.println();
+		selectionSort(potato3);
 		for(int i = 0; i < potato3.length;i++) {
 			System.out.print(potato3[i] + " ");
 		}
@@ -56,11 +79,10 @@ public class ArrayMethods3Josh {
 			int smallest = i;
 			for(int j = i + 1; j < array.length; j++) {
 				if(array[j] < array[smallest]) {
-					j = smallest;
+					smallest = j;
 				}
-				if(j == array.length - 1)
-					swapDoubleArray(array,i,j);
 			}
+			swapDoubleArray(array,i,smallest);
 		}
 	}
 	
