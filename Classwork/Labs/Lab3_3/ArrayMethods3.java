@@ -1,5 +1,7 @@
 package Lab3_3;
 
+import java.util.Arrays;
+
 public class ArrayMethods3 {
 	public static void main(String[] args) {
 		String[] potato = {"apples","potato","potato","apple"}; //Bubble Sort Tests
@@ -78,9 +80,43 @@ public class ArrayMethods3 {
 		{
 			System.out.println(x);
 		}
-		System.out.println();
+		System.out.println("\n");
 		
+		String[] time = {"zebra","trap","pool","main","deter","clay","aids"};     //Time Test
+		double[] time1 = {100.0,98.0,77.0,55.0,55.1,33.0,1.1};
+		int[] time2 = {27,22,18,15,11,7,1};
 		
+		long avg = 0;
+		long avg1 = 0;
+		long avg2 = 0;
+		
+		for(int i = 0; i < 1000; i++)
+		{
+			long startime  = System.nanoTime();
+			bubbleSort(time);
+			long endtime = System.nanoTime();
+			long finalTime = endtime - startime;
+			avg += finalTime;
+		}
+		System.out.print("it took " + avg/1000+" for Bubble Sort.\n");
+		for(int i = 0; i < 1000; i++)
+		{
+			long startime  = System.nanoTime();
+			selectionSort(time1);
+			long endtime = System.nanoTime();
+			long finalTime = endtime - startime;
+			avg1 += finalTime;
+		}
+		System.out.print("it took " + avg1/1000+" for Selection Sort.\n");
+		for(int i = 0; i < 1000; i++)
+		{
+			long startime  = System.nanoTime();
+			insertionSort(time2);
+			long endtime = System.nanoTime();
+			long finalTime = endtime - startime;
+			avg2 += finalTime;
+		}
+		System.out.print("it took " + avg2/1000+" for Insertion Sort.\n");
 	}
 	
 	public static void insertionSort(int [] list1)
