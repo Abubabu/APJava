@@ -158,7 +158,6 @@ public class ArrayMethods3 {
 			}	
 		}
 	}
-
 	public static void swapIntArray(int[] array, int i, int j) {
 		int temp = array[i];
 		array[i] = array[j];
