@@ -87,7 +87,7 @@ public class ArrayMethods4 {
 		{
 			int half = (back+front)/2 ;
 			if(half != list1.length - 1 && half !=0){
-				int[] oneHalf = Arrays.copyOfRange(list1, 0, half);
+				int[] oneHalf = Arrays.copyOfRange(list1, 0, half); 
 				int[] otherHalf = Arrays.copyOfRange(list1, half, list1.length);
 				partition(oneHalf,0,half);
 				quickSort( oneHalf,0,half);
