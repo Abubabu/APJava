@@ -109,7 +109,7 @@ public class ArrayMethods4 {
 		
 		if(front != back) {
 			partition(list1,front, back);
-				quickSort(list1,front, ((front + back) / 2) - 1);
+				quickSort(list1,front, ((front + back) / 2) - 1); 
 				quickSort(list1,((front + back ) / 2) + 1, back);
 		}
 	}
