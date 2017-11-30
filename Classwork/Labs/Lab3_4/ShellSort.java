@@ -22,7 +22,7 @@ public class ShellSort {
 		for(int i = 0; i < 1000; i++)
 		{
 			long startime  = System.nanoTime();
-			shellSort(time0,list.length/3);
+			shellSort(time0,time0.length/2);
 			long endtime = System.nanoTime();
 			long finalTime = endtime - startime;
 			avg += finalTime;
