@@ -31,7 +31,7 @@ public class HelloWorld extends Application {
         stage.setTitle("Shell Sort");
         final NumberAxis xAxis = new NumberAxis(0, 10000, 1000);
         final NumberAxis yAxis = new NumberAxis(0, 100000, 1000);        
-        final ScatterChart<Number,Number> sc = new
+        final ScatterChart<Number,Number> sc = new 
             ScatterChart<Number,Number>(xAxis,yAxis);
         xAxis.setLabel("Array Length");                
         yAxis.setLabel("Nanoseconds");
