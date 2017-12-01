@@ -29,8 +29,8 @@ public class HelloWorld extends Application {
  
     @Override public void start(Stage stage) {
         stage.setTitle("Shell Sort");
-        final NumberAxis xAxis = new NumberAxis(0, 1000, 100);
-        final NumberAxis yAxis = new NumberAxis(0, 5000, 500);        
+        final NumberAxis xAxis = new NumberAxis(0, 10000, 1000);
+        final NumberAxis yAxis = new NumberAxis(0, 100000, 1000);        
         final ScatterChart<Number,Number> sc = new
             ScatterChart<Number,Number>(xAxis,yAxis);
         xAxis.setLabel("Array Length");                
@@ -40,21 +40,21 @@ public class HelloWorld extends Application {
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("ShellSort");
         
-        for (int j = 0; j < 1000; j = j + 100) {
+        for (int j = 0; j < 10000; j = j + 1000) {
 			int[] list = new int[j];
 			for(int k = 0; k < j; k++)
 			{
-				list[k] = (int) (Math.random()*100);
+				list[k] = (int) (Math.random()*1000);
 			}
 			double time = 0;
-			for (int i = 0; i < 1000; i++) {
+			for (int i = 0; i < 10000; i++) {
 				long startime = System.nanoTime();
 				ShellSort.shellSort(list, j / 2);
 				long endtime = System.nanoTime();
 				long finalTime = endtime - startime;
 				time += finalTime;
 			}
-			series1.getData().add(new XYChart.Data(j, time / 1000));
+			series1.getData().add(new XYChart.Data(j, (time / 10000)));
 		}
 		sc.getData().addAll(series1);
         Scene scene  = new Scene(sc, 500, 400);

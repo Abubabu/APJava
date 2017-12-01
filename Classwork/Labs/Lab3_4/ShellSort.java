@@ -52,6 +52,10 @@ public class ShellSort {
 	}
 	public static void insertionSort(int [] list1)
 	{
+		if(list1.length == 0)
+		{
+			return;
+		}
 		int fhp = 1;
 		if(list1[0] > list1[1])
 		{
