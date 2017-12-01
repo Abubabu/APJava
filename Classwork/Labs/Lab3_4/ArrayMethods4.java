@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ArrayMethods4 {
 	public static void main(String[] args)
 	{
-		int[] Numeros = {3,1,61,1,61,16,4,1,2,44,466};
+		int[] Numeros = {3,1,61,16,4,1,2,441,1,466,1};
 		int[] Numeros1 = {62, 100, 141, 138, 190, 116, 111, 175, 162, 3};
 		int[] Numeros2 = {185, 45, 110, 151, 163, 86, 100, 143, 57, 21};
 		partition(Numeros,0,Numeros.length);						//Partition Test
@@ -94,13 +94,13 @@ public class ArrayMethods4 {
 	
 	public static void quickSort(int[] list1, int front, int back)
 	{	
-		if(front != back) {
+		if(front < back && back - front > 1) {
 			int pivot = partition(list1,front, back);
-			if(pivot - 1 >= front)
-			   quickSort(list1,front, pivot--); 
-			if(pivot + 1 < back)
-				quickSort(list1,pivot++, back);
+			   quickSort(list1,front, pivot); 
+			   quickSort(list1,pivot + 1, back);
+		
 		}
+			
 	}
 	public static void customSort()//depends on the sort)
 	{
