@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="Shapes"/>
 	<classpathentry kind="src" path="Donows"/>
 	<classpathentry kind="src" path="Labs"/>
+	<classpathentry kind="src" path="Sort_A_Mania"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
