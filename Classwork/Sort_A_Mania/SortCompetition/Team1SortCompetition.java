@@ -1,17 +1,36 @@
 package SortCompetition;
 
-public class TeamSortCompetition {
+public class Team1SortCompetition {
 	public static void main(String[] args)
 	{
-		
+		int j = 0;
+		double avg1 = 0;
+		int[] time1 = new int[10000];
+		while(j < 100)
+		{
+			for(int i = 0; i < 1; i++)
+			{
+				for(int k = 0; k < 10000; k++)
+				{
+					time1[k] = (int) (Math.random()*10000); //need to have semi-sorted array
+				}
+				long startime  = System.nanoTime();
+				challengeThree(time1);
+				long endtime = System.nanoTime();
+				long finalTime = endtime - startime;
+				avg1 += finalTime;
+			}
+			j++;
+		}
+		System.out.print(avg1/100);
 	}
 	
-	public static int challengeOne(int[] nums)
+	public static int challengeOne(int[] nums) //Counting Sort
 	{
 		shellSort(nums,nums.length/2);
 		return median(nums);
 	}
-	public static int challengeTwo(String[] strings)
+	public static int challengeTwo(String[] strings) //Counting Sort
 	{
 		return 0;
 	}
@@ -117,6 +136,7 @@ public class TeamSortCompetition {
 		array[j] = temp;
 	}
 	private static int median(int[] nums)
+
 	{
 		if(nums.length%2 == 1)
 		{
@@ -126,5 +146,10 @@ public class TeamSortCompetition {
 		{
 			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;
 		}
+	}
+	public static int challengeThree(int[] num)
+	{
+		insertionSort(num);
+		return median(num);
 	}
 }
