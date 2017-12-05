@@ -2,7 +2,7 @@ package SortCompetition;
 
 public class CountingSort {
 	public static void main(String[] args) {
-		/*int j = 0;
+		int j = 0;
 		double avg1 = 0;
 		int[] time1 = new int[10000];
 		while(j < 100)
@@ -20,14 +20,8 @@ public class CountingSort {
 				avg1 += finalTime;
 			}
 			j++;
-	}*/
-		int[] time1 = {1,3,1,6,1,3,6,0,1,2};
-		long startime  = System.nanoTime();
-		countingSort(time1);
-		long endtime = System.nanoTime(); // 88534.76
-		long finalTime = endtime - startime;
-		
-		System.out.print(finalTime);
+	}
+		System.out.print(avg1/100);
 	}
 		public static void countingSort(int[] array) {
 			int[] hashedArray = new int[array.length];
@@ -41,17 +35,14 @@ public class CountingSort {
 			}
 			int count = 0;
 			int numcount = 0;
-			int initialcount = count;
+			int startposition = 0;
 			while(count < array.length) {
-						for(int z = hashedArray[numcount - 1]; z < hashedArray[numcount];z++) {
-							array[count] = numcount;
-							count++;
-							z++;
-							if(count >= array.length)
-								break;
-						}
-						numcount++;
+				for(int z = startposition; z < hashedArray[numcount]; z++) {
+					array[count] = numcount;
+					count++;
 				}
-				
+				startposition = hashedArray[numcount];
+				numcount++;
+			}
 		}
 }
