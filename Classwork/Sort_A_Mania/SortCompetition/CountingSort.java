@@ -20,7 +20,7 @@ public class CountingSort {
 				avg1 += finalTime;
 			}
 			j++;
-	}
+		}
 		System.out.print(avg1/100);
 	}
 		public static void countingSort(int[] array) {

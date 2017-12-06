@@ -1,5 +1,7 @@
 package SortCompetition;
 
+import java.util.Arrays;
+
 public class Team1SortCompetition extends SortCompetition {
 	public static void main(String[] args)
 	{
@@ -44,12 +46,11 @@ public class Team1SortCompetition extends SortCompetition {
 		int[] associatedArray = new int[nums.length];
 		for(int i = 0; i < nums.length; i++)
 		{
-			//TimSort(nums[i]);
+			TimSortsOP(nums[i]);
 			associatedArray[i] = medianFixed(nums[i]);
 		}
 		//TimSortParalell(associatedArray,nums);
 		return median(   medianFixed(	nums[	((int)nums.length/2)] ), medianFixed( nums[ ((int)nums.length/2)+1] )); 
-		
 	}
 	public int challengeFive(Comparable[] arr, Comparable query) {
 		// TODO Auto-generated method stub
@@ -119,6 +120,64 @@ public class Team1SortCompetition extends SortCompetition {
 			startposition = hashedArray[numcount];
 			numcount++;
 		}
+	}
+	public static int[] TimSortsOP(int[] nums)
+	{
+		if(nums.length < 10)
+		{
+			insertionSort(nums);
+			return nums;
+		}
+		else
+		{
+			int half = (nums.length/2 );
+			int[] oneHalf = Arrays.copyOfRange(nums, 0, half);
+			int[] otherHalf = Arrays.copyOfRange(nums, half, nums.length);
+			return mergeIntOptimized(  TimSortsOP( oneHalf ), TimSortsOP( otherHalf));		
+		}
+	}
+	private static int[] mergeIntOptimized(int[] nums1, int[] nums2) {
+		int[] result = new int[nums1.length+nums2.length];
+		int onePosition = 0;
+		int twoPosition = 0;
+		while(true)
+		{
+			if(onePosition > nums1.length-1) //when all of list1 is in the results array
+			{
+				for(int i = twoPosition; i < nums2.length; i++)
+				{
+					result[nums1.length+i] = nums2[i];
+				}
+				break;
+			}
+			if(twoPosition > nums2.length-1) //when all of list2 is in the results array
+			{
+				for(int i = onePosition; i < nums1.length; i++)
+				{
+					result[nums2.length+i] = nums1[i];
+				}
+				break;
+			}
+			if(  nums1[onePosition] < nums2[twoPosition] ) // if list1 is lower
+			{
+				result[onePosition+twoPosition] = nums1[onePosition];
+				onePosition++;
+				continue;
+			}
+			else if(  nums2[twoPosition] < nums1[onePosition] ) // if list2 is lower
+			{
+				result[onePosition+twoPosition] = nums2[twoPosition];
+				twoPosition++;
+				continue;
+			}
+			else
+			{
+				result[onePosition+twoPosition] = nums2[twoPosition];
+				twoPosition++;
+				continue;
+			}
+		}
+		return result;
 	}
 	private static void swapIntArray(int[] array, int i, int j) {
 
