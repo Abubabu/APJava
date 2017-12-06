@@ -15,7 +15,7 @@ public class Team1SortCompetition extends SortCompetition {
 					time1[k] = (int) (Math.random()*10000); //need to have semi-sorted array
 				}
 				long startime  = System.nanoTime();
-				challengeThree(time1);
+				//challengeThree(time1);
 				long endtime = System.nanoTime();
 				long finalTime = endtime - startime;
 				avg1 += finalTime;
@@ -48,7 +48,7 @@ public class Team1SortCompetition extends SortCompetition {
 			associatedArray[i] = medianFixed(nums[i]);
 		}
 		//TimSortParalell(associatedArray,nums);
-	//	return medianFixed(   nums[		medianFixed(nums.length)		]	) ///ASK LEVIN WTH THE MEDIAN ARRAY OF 1000 ARRAYS IS, CANT SELECT 500&501
+		return median(   medianFixed(	nums[	((int)nums.length/2)] ), medianFixed( nums[ ((int)nums.length/2)+1] )); 
 		
 	}
 	public int challengeFive(Comparable[] arr, Comparable query) {
@@ -129,6 +129,10 @@ public class Team1SortCompetition extends SortCompetition {
 	private static int medianFixed(int[] nums)
 	{
 			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;
+	}
+	private static int median(int num1, int num2)
+	{
+			return (num1+num2)/2;
 	}
 	@Override
 	public String greeting() {
