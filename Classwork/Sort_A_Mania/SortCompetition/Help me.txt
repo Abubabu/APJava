@@ -1,7 +1,7 @@
 ChallengeOne:Counting sort
 ChallengeTwo: Counting sort + binary search
-ChallengeThree: Insertion Sort > Bubble Sort
-ChallengeFour: TimSort + Counting Sort
+ChallengeThree: Insertion Sort
+ChallengeFour: TimSort + TimSort
 
 http://bigocheatsheet.com/
 

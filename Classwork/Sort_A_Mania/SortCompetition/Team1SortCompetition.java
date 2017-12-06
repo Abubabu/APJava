@@ -98,7 +98,7 @@ public class Team1SortCompetition extends SortCompetition {
 			}	
 		}
 	}
-	public static void countingSort(int[] array) {
+	private static void countingSort(int[] array) {
 		int[] hashedArray = new int[array.length];
 		
 		for(int i = 0; i < array.length; i++) {
@@ -125,17 +125,6 @@ public class Team1SortCompetition extends SortCompetition {
 		int temp = array[i];
 		array[i] = array[j];
 		array[j] = temp;
-	}
-	private static int median(int[] nums)
-	{
-		if(nums.length%2 == 1)
-		{
-			return nums[((int)nums.length/2) + 1];
-		}
-		else
-		{
-			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;
-		}
 	}
 	private static int medianFixed(int[] nums)
 	{
