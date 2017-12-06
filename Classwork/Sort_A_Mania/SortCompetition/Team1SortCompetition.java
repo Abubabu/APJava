@@ -1,6 +1,6 @@
 package SortCompetition;
 
-public class Team1SortCompetition {
+public class Team1SortCompetition extends SortCompetition {
 	public static void main(String[] args)
 	{
 		int j = 0;
@@ -25,21 +25,21 @@ public class Team1SortCompetition {
 		System.out.print(avg1/100);
 	}
 	
-	public static int challengeOne(int[] nums) //Counting Sort
+	public  int challengeOne(int[] nums) //Counting Sort
 	{
 		countingSort(nums);
 		return medianFixed(nums);
 	}
-	public static int challengeTwo(String[] strings) //Counting Sort
+	public int challengeTwo(String[] strings, String query) //Counting Sort
 	{
 		return 0;
 	}
-	public static int challengeThree(int[] num) //Insertion Sort
+	public int challengeThree(int[] num) //Insertion Sort
 	{
 		insertionSort(num);
 		return medianFixed(num);
 	}
-	private static int challengeFour(int[][] nums) //Tim Sort
+	public int challengeFour(int[][] nums) //Tim Sort
 	{
 		int[] associatedArray = new int[nums.length];
 		for(int i = 0; i < nums.length; i++)
@@ -50,6 +50,10 @@ public class Team1SortCompetition {
 		//TimSortParalell(associatedArray,nums);
 	//	return medianFixed(   nums[		medianFixed(nums.length)		]	) ///ASK LEVIN WTH THE MEDIAN ARRAY OF 1000 ARRAYS IS, CANT SELECT 500&501
 		
+	}
+	public int challengeFive(Comparable[] arr, Comparable query) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	private static void insertionSort(int [] list1)
 	{
@@ -137,5 +141,9 @@ public class Team1SortCompetition {
 	{
 			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;
 	}
-
+	@Override
+	public String greeting() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
