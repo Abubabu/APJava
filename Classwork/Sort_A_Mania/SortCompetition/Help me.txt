@@ -1,7 +1,7 @@
-ChallengeOne:Counting sort, Radix Sort
-ChallengeTwo: Counting sort, Radix Sort  + binary search
+ChallengeOne:Counting sort
+ChallengeTwo: Counting sort + binary search
 ChallengeThree: Insertion Sort > Bubble Sort
-ChallengeFour:
+ChallengeFour: TimSort + Counting Sort
 
 http://bigocheatsheet.com/
 
@@ -9,9 +9,10 @@ One:
 Insert, Bubble: 10,000-100,000,000
 Shell: 40,000-1,600,000,000
 Radix: 100,000,000
-Counting: 20,000
+Counting: 20,000 
 Bucket: 20,000 - 100,000,000
 Heap, Merge: 40,000
+TimSort: 10,000 - 30,000
 
 Two:
 Insert, Bubble: 10,000-100,000,000
@@ -20,4 +21,23 @@ Radix: 50,000
 Counting: 10,005
 Bucket: 10,005 - 100,000,000
 Heap, Merge: 40,000
+TimSort: 10,000 - 30,000
 
+Four: One array
+Insert, Bubble: 1,000 - 1,000,000
+Shell: 3,000- 9,000,000
+Radix: 10,000,000
+Counting: 11,000
+Bucket: 11,000 - 1,000,000
+Heap, Merge: 3,000
+quickSort: 3,000 - 1,000,000
+TimSort: 1,000 - 3,000
+
+Four: Sorting 2D Array one at a time
+Insert, Bubble: 1,000 - 1,000,000
+Shell: 3,000- 9,000,000
+Radix: 1,000 - 10,000,000
+Counting: 1,001 - 11,000
+Bucket: 1,001 - 1,000,000
+Heap, Merge: 3,000
+TimSort: 1,000 - 3,000

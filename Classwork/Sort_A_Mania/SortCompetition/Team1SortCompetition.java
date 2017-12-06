@@ -27,29 +27,29 @@ public class Team1SortCompetition {
 	
 	public static int challengeOne(int[] nums) //Counting Sort
 	{
-		shellSort(nums,nums.length/2);
-		return median(nums);
+		countingSort(nums);
+		return medianFixed(nums);
 	}
 	public static int challengeTwo(String[] strings) //Counting Sort
 	{
 		return 0;
 	}
-	private static void shellSort(int[] list,int sequence)
+	public static int challengeThree(int[] num) //Insertion Sort
 	{
+		insertionSort(num);
+		return medianFixed(num);
+	}
+	private static int challengeFour(int[][] nums) //Tim Sort
+	{
+		int[] associatedArray = new int[nums.length];
+		for(int i = 0; i < nums.length; i++)
+		{
+			//TimSort(nums[i]);
+			associatedArray[i] = medianFixed(nums[i]);
+		}
+		//TimSortParalell(associatedArray,nums);
+	//	return medianFixed(   nums[		medianFixed(nums.length)		]	) ///ASK LEVIN WTH THE MEDIAN ARRAY OF 1000 ARRAYS IS, CANT SELECT 500&501
 		
-		int gap = sequence;
-		if(gap <= 1)
-		{
-			insertionSort(list);
-		}
-		else
-		{
-			for (int i = 0; i < gap; i++) {
-				gapInsertionSort(list, gap, i);
-			}
-			shellSort(list,(int) (sequence/2.2));
-			
-		}
 	}
 	private static void insertionSort(int [] list1)
 	{
@@ -94,39 +94,26 @@ public class Team1SortCompetition {
 			}	
 		}
 	}
-	private static void gapInsertionSort(int [] list1,int gap,int start)
-	{
-		int fhp = start;
-		while(true)
-		{
-			if(fhp >= list1.length-gap)
-			{
-				break;
+	public static void countingSort(int[] array) {
+		int[] hashedArray = new int[array.length];
+		
+		for(int i = 0; i < array.length; i++) {
+			hashedArray[array[i]] += 1;
+		}
+		
+		for(int j = 1; j < hashedArray.length; j++) {
+			hashedArray[j] += hashedArray[j - 1];
+		}
+		int count = 0;
+		int numcount = 0;
+		int startposition = 0;
+		while(count < array.length) {
+			for(int z = startposition; z < hashedArray[numcount]; z++) {
+				array[count] = numcount;
+				count++;
 			}
-			if(list1[fhp] <= list1[fhp+gap])
-			{
-				fhp = fhp+gap;
-				continue;
-			}
-			if(list1[fhp] > list1[fhp+gap])
-			{
-					swapIntArray(list1,fhp,fhp+gap);
-					int num = fhp;
-					for(int i = fhp-gap; i > -1; i = i - gap)
-					{
-						if(list1[i] <= list1[num])
-						{
-							break;
-						}
-						else
-						{
-							swapIntArray(list1,i,num);
-							num = num -gap ;
-						}
-					}
-					fhp = fhp + gap;
-					continue;
-			}	
+			startposition = hashedArray[numcount];
+			numcount++;
 		}
 	}
 	private static void swapIntArray(int[] array, int i, int j) {
@@ -136,7 +123,6 @@ public class Team1SortCompetition {
 		array[j] = temp;
 	}
 	private static int median(int[] nums)
-
 	{
 		if(nums.length%2 == 1)
 		{
@@ -147,9 +133,9 @@ public class Team1SortCompetition {
 			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;
 		}
 	}
-	public static int challengeThree(int[] num)
+	private static int medianFixed(int[] nums)
 	{
-		insertionSort(num);
-		return median(num);
+			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;
 	}
+
 }
