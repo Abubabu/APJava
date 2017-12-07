@@ -156,7 +156,7 @@ public class TimSort {
 		else
 		{
 			boolean mergeDone = false;
-			int currentposition = 0;
+			int currentposition = 0; 
 			int[][] allArrays = new int[nums.length % 64][64];
 			int count = 0;
 			while(!mergeDone)
