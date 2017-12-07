@@ -25,6 +25,14 @@ public class Team1SortCompetition extends SortCompetition {
 			j++;
 		}
 		System.out.print(avg1/100);
+		
+		int values[][] = new int[1000][1000];
+	    for (int i = 0; i < values.length; i++) {
+	        for (int p = 0; p < values[i].length; p++) {
+	            values[i][p] = ((int) (Math.random() * 10000));
+	        }
+	    }
+	//	challengeFour(values);
 	}
 	
 	public  int challengeOne(int[] nums) //Counting Sort
@@ -49,7 +57,7 @@ public class Team1SortCompetition extends SortCompetition {
 			TimSortsOP(nums[i]);
 			associatedArray[i] = medianFixed(nums[i]);
 		}
-		//TimSortParalell(associatedArray,nums);
+		insertionSort(associatedArray,nums);
 		return median(   medianFixed(	nums[	((int)nums.length/2)] ), medianFixed( nums[ ((int)nums.length/2)+1] )); 
 	}
 	public int challengeFive(Comparable[] arr, Comparable query) {
@@ -99,6 +107,53 @@ public class Team1SortCompetition extends SortCompetition {
 			}	
 		}
 	}
+	//Overloaded
+	private static void insertionSort(int [] list1,int[][] nums)
+	{
+		if(list1.length == 0)
+		{
+			return;
+		}
+		int fhp = 1;
+		if(list1[0] > list1[1])
+		{
+			swapIntArray(list1,0,1);
+			swapArrayArray(nums,0,1);
+		}
+		while(true)
+		{
+			if(fhp >= list1.length-1)
+			{
+				break;
+			}
+			if(list1[fhp] <= list1[fhp+1])
+			{
+				fhp = fhp+1;
+				continue;
+			}
+			if(list1[fhp] > list1[fhp+1])
+			{
+					swapIntArray(list1,fhp,fhp+1);
+					swapArrayArray(nums,fhp,fhp+1);
+					int num = fhp;
+					for(int i = fhp-1; i > -1; i--)
+					{
+						if(list1[i] <= list1[num])
+						{
+							break;
+						}
+						else
+						{
+							swapIntArray(list1,i,num);
+							swapArrayArray(nums,i,num);
+							num = num -1 ;
+						}
+					}
+					fhp = fhp + 1;
+					continue;
+			}	
+		}
+	}
 	private static void countingSort(int[] array) {
 		int[] hashedArray = new int[array.length];
 		
@@ -123,7 +178,7 @@ public class Team1SortCompetition extends SortCompetition {
 	}
 	public static int[] TimSortsOP(int[] nums)
 	{
-		if(nums.length < 10)
+		if(nums.length < 8)
 		{
 			insertionSort(nums);
 			return nums;
@@ -185,13 +240,20 @@ public class Team1SortCompetition extends SortCompetition {
 		array[i] = array[j];
 		array[j] = temp;
 	}
+	private static void swapArrayArray(int[][] array, int i, int j) {
+
+		int[] temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+	//ASK IF WE SHOULD RETURN A DOUBLE OR INT FOR MEDIAN
 	private static int medianFixed(int[] nums)
 	{
-			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;
+			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;    //ASK IF WE SHOULD RETURN A DOUBLE OR INT FOR MEDIAN
 	}
 	private static int median(int num1, int num2)
 	{
-			return (num1+num2)/2;
+			return (num1+num2)/2;		 //ASK IF WE SHOULD RETURN A DOUBLE OR INT FOR MEDIAN
 	}
 	@Override
 	public String greeting() {
