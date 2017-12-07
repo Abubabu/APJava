@@ -60,7 +60,7 @@ public class TimSort {
 				"sssss",
 				"yuu"};
 		System.out.println("");
-		insertionSortString(potato);
+		potato = TimSorts(potato);
 		System.out.println("");
 		
 	}
@@ -187,7 +187,45 @@ public class TimSort {
 			}	
 		}
 	}
-	
+	public static void insertionSortStringBetter(String [] list1)
+	{
+		int fhp = 1;
+		if(list1[0].compareTo(list1[1]) > 0)
+		{
+			swapStringArray(list1,0,1);
+		}
+		while(true)
+		{
+			if(fhp >= list1.length-1)
+			{
+				break;
+			}
+			if(list1[fhp].compareTo(list1[fhp+1]) < 0)
+			{
+				fhp = fhp+1;
+				continue;
+			}
+			if(list1[fhp].compareTo(list1[fhp+1]) > 0)
+			{
+					swapStringArray(list1,fhp,fhp+1);
+					int num = fhp;
+					for(int i = fhp-1; i > -1; i--)
+					{
+						if(list1[i].compareTo(list1[num]) < 0)
+						{
+							break;
+						}
+						else
+						{
+							swapStringArray(list1,i,num);
+							num = num -1 ;
+						}
+					}
+					fhp = fhp + 1;
+					continue;
+			}	
+		}
+	}
 	public static void insertionSortString(String [] list1)
 	{
 		int fhp = 1;
@@ -227,6 +265,30 @@ public class TimSort {
 			}	
 		}
 	}
+	
+	public static int binarySearchTim(String[] array,  String query,int first,int last) {
+		if(last > first)
+		{
+			int index = (first+last)/2;
+			String guess = array[index];
+			
+			if(guess.compareTo(query) == 0)
+			{
+				return index;
+			}
+			
+			if(guess.compareTo(query) < 0)
+			{
+				return binarySearchTim(array,query,first,index);
+			}
+			if(guess.compareTo(query) > 0)
+			{
+				return binarySearchTim(array,query,index+1,last);
+			}
+		}
+		return -1;
+	}
+	
 	public static void swapStringArray(String[] array, int i, int j) {
 		String temp = array[i];
 		array[i] = array[j];
@@ -251,7 +313,7 @@ public class TimSort {
 	{
 		if(nums.length < 8)
 		{
-			insertionSortString(nums);
+			insertionSortStringBetter(nums);
 			return nums;
 		}
 		else
