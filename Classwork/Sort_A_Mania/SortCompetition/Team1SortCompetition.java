@@ -61,8 +61,7 @@ public class Team1SortCompetition extends SortCompetition {
 		return median(   medianFixed(	nums[	((int)nums.length/2)] ), medianFixed( nums[ ((int)nums.length/2)+1] )); 
 	}
 	public int challengeFive(Comparable[] arr, Comparable query) {
-		// TODO Auto-generated method stub
-		return 0;
+		return void;
 	}
 	private static void insertionSort(int [] list1)
 	{
@@ -246,14 +245,14 @@ public class Team1SortCompetition extends SortCompetition {
 		array[i] = array[j];
 		array[j] = temp;
 	}
-	//ASK IF WE SHOULD RETURN A DOUBLE OR INT FOR MEDIAN
+	
 	private static int medianFixed(int[] nums)
 	{
 			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;    //ASK IF WE SHOULD RETURN A DOUBLE OR INT FOR MEDIAN
 	}
 	private static int median(int num1, int num2)
 	{
-			return (num1+num2)/2;		 //ASK IF WE SHOULD RETURN A DOUBLE OR INT FOR MEDIAN
+			return (num1+num2)/2;		 
 	}
 	@Override
 	public String greeting() {
