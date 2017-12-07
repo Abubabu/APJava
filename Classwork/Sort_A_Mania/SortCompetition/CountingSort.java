@@ -22,7 +22,7 @@ public class CountingSort {
 			j++;
 		}
 		System.out.print(avg1/100);*/
-		System.out.println("AAAAAAAAAAAAAA".compareTo("akersman"));
+		System.out.println("apple".compareTo("bad"));
 	}
 		public static void countingSort(int[] array) {
 			int[] hashedArray = new int[array.length];

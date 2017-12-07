@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class TimSort {
 	public static void main(String[] args)
 	{
-		int j = 0;
+		/*int j = 0;
 		double avg1 = 0;
 		int[] time1 = new int[10000];
 		while(j < 100)
@@ -30,7 +30,7 @@ public class TimSort {
 		for(int i = 0; i < no.length; i++)
 		{
 			System.out.println(no[i]);
-		}	*/
+		}	
 		int[] median = {9 ,5 ,1 ,3 ,0 ,22,7 ,44};
 		int[] nums =   {44,33,11,22,55,66,77,88};
 	//	insertionSort(median,nums);
@@ -50,10 +50,21 @@ public class TimSort {
 	            values[i][p] = ((int) (Math.random() * 10000));
 	        }
 	    }
-		challengeFour(values);
+		challengeFour(values);*/
+		String[] potato = { "apple",
+					"can",
+				"lob",
+				"bannana",
+				"sdf",
+				"ggsa",
+				"sssss",
+				"yuu"};
+		System.out.println("");
+		insertionSortString(potato);
+		System.out.println("");
 		
 	}
-	//Overloaded
+
 	public static int challengeFour(int[][] nums) //Tim Sort
 	{
 		int[] associatedArray = new int[nums.length];
@@ -84,6 +95,51 @@ public class TimSort {
 	private static int median(int num1, int num2)
 	{
 			return (num1+num2)/2;
+	}
+	
+	public static String[] mergeString(String[] list1, String[] list2)
+	{
+		String[] result = new String[list1.length+list2.length];
+		int onePosition = 0;
+		int twoPosition = 0;
+		while(true)
+		{
+			if(onePosition >= list1.length) //when all of list1 is in the results array
+			{
+				for(int i = twoPosition; i < list2.length; i++)
+				{
+					result[list1.length+i] = list2[i];
+				}
+				break;
+			}
+			if(twoPosition >= list2.length) //when all of list2 is in the results array
+			{
+				for(int i = onePosition; i < list1.length; i++)
+				{
+					result[list2.length+i] = list1[i];
+				}
+				break;
+			}
+			if(  list1[onePosition].compareTo(list2[twoPosition]) == 0) // doesn't matter which one you push into array
+			{
+				result[onePosition+twoPosition] = list2[twoPosition];
+				twoPosition++;
+				continue;
+			}
+			if(  list1[onePosition].compareTo(list2[twoPosition]) < 0 ) // if list1 is lower
+			{
+				result[onePosition+twoPosition] = list1[onePosition];
+				onePosition++;
+				continue;
+			}
+			if(  list2[twoPosition].compareTo(list1[onePosition]) < 0 ) // if list2 is lower
+			{
+				result[onePosition+twoPosition] = list2[twoPosition];
+				twoPosition++;
+				continue;
+			}
+		}
+		return result;
 	}
 	private static void insertionSort(int [] list1,int[][] nums)
 	{
@@ -135,7 +191,7 @@ public class TimSort {
 	public static void insertionSortString(String [] list1)
 	{
 		int fhp = 1;
-		if(list1[0].compareTo(list1[1]) > 0)
+		if(list1[0].compareTo(list1[1]) < 0)
 		{
 			swapStringArray(list1,0,1);
 		}
@@ -145,7 +201,7 @@ public class TimSort {
 			{
 				break;
 			}
-			if(list1[fhp].compareTo(list1[fhp+1]) > 0)
+			if(list1[fhp].compareTo(list1[fhp+1]) >= 0)
 			{
 				fhp = fhp+1;
 				continue;
@@ -156,7 +212,7 @@ public class TimSort {
 					int num = fhp;
 					for(int i = fhp-1; i > -1; i--)
 					{
-						if(list1[i].compareTo(list1[num]) > 0)
+						if(list1[i].compareTo(list1[num]) >= 0)
 						{
 							break;
 						}
@@ -203,7 +259,7 @@ public class TimSort {
 			int half = (nums.length/2 );
 			String[] oneHalf = Arrays.copyOfRange(nums, 0, half);
 			String[] otherHalf = Arrays.copyOfRange(nums, half, nums.length);
-			return mergeIntOptimized( TimSorts( oneHalf ), TimSorts( otherHalf));		
+			return mergeString( TimSorts( oneHalf ), TimSorts( otherHalf));		
 		}
 	}
 	private static int[] mergeInt(int[] nums1, int[] nums2) {
