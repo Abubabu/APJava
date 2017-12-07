@@ -148,16 +148,26 @@ public class TimSort {
 	}
 	public static int[] TimSorts(int[] nums)
 	{
-		if(nums.length < 10)
+		if(nums.length <= 64)
 		{
 			insertionSort(nums);
 			return nums;
 		}
 		else
 		{
-			int half = (nums.length/2 );
-			int[] oneHalf = Arrays.copyOfRange(nums, 0, half);
-			int[] otherHalf = Arrays.copyOfRange(nums, half, nums.length);
+			boolean mergeDone = false;
+			int currentposition = 0;
+			int[][] allArrays = new int[nums.length % 64][64];
+			int count = 0;
+			while(!mergeDone)
+			{
+				if(currentposition + 64 < nums.length) {
+					int [] tempArray = // idk what sadmans insertion sort is doing, will have to complete tomorrow
+					allArrays[count]= insertionSort(Arrays.copyOfRange(nums, currentposition, currentposition + 64));
+					count++;
+				}
+					
+			}
 			return mergeInt(  TimSorts( oneHalf ), TimSorts( otherHalf));		
 		}
 	}
