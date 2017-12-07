@@ -61,7 +61,7 @@ public class Team1SortCompetition extends SortCompetition {
 		return median(   medianFixed(	nums[	((int)nums.length/2)] ), medianFixed( nums[ ((int)nums.length/2)+1] )); 
 	}
 	public int challengeFive(Comparable[] arr, Comparable query) {
-		return void;
+		insertionSortCom(arr);
 	}
 	private static void insertionSort(int [] list1)
 	{
@@ -98,6 +98,45 @@ public class Team1SortCompetition extends SortCompetition {
 						else
 						{
 							swapIntArray(list1,i,num);
+							num = num -1 ;
+						}
+					}
+					fhp = fhp + 1;
+					continue;
+			}	
+		}
+	}
+	public static void insertionSortCom(Comparable [] list1)
+	{
+		int fhp = 1;
+		if(list1[0].compareTo(list1[1]) > 0)
+		{
+			swapComparableArray(list1,0,1);
+		}
+		while(true)
+		{
+			if(fhp >= list1.length-1)
+			{
+				break;
+			}
+			if(list1[fhp].compareTo(list1[fhp+1]) < 0)
+			{
+				fhp = fhp+1;
+				continue;
+			}
+			if(list1[fhp].compareTo(list1[fhp+1]) > 0)
+			{
+					swapComparableArray(list1,fhp,fhp+1);
+					int num = fhp;
+					for(int i = fhp-1; i > -1; i--)
+					{
+						if(list1[i].compareTo(list1[num]) < 0)
+						{
+							break;
+						}
+						else
+						{
+							swapComparableArray(list1,i,num);
 							num = num -1 ;
 						}
 					}
@@ -245,7 +284,11 @@ public class Team1SortCompetition extends SortCompetition {
 		array[i] = array[j];
 		array[j] = temp;
 	}
-	
+	public static void swapComparableArray(Comparable[] array, int i, int j) {
+		Comparable temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
 	private static int medianFixed(int[] nums)
 	{
 			return (nums[((int)nums.length/2)] + nums[((int)nums.length/2)+1])/2;    //ASK IF WE SHOULD RETURN A DOUBLE OR INT FOR MEDIAN

@@ -12,12 +12,12 @@ public class TimSortForComparable {
 			System.out.println(test[i]);
 		}
 	}
-	public static void insertionSortString(String [] list1)
+	public static void insertionSortString(Comparable [] list1)
 	{
 		int fhp = 1;
 		if(list1[0].compareTo(list1[1]) > 0)
 		{
-			swapStringArray(list1,0,1);
+			swapComparableArray(list1,0,1);
 		}
 		while(true)
 		{
@@ -32,7 +32,7 @@ public class TimSortForComparable {
 			}
 			if(list1[fhp].compareTo(list1[fhp+1]) > 0)
 			{
-					swapStringArray(list1,fhp,fhp+1);
+					swapComparableArray(list1,fhp,fhp+1);
 					int num = fhp;
 					for(int i = fhp-1; i > -1; i--)
 					{
@@ -42,7 +42,7 @@ public class TimSortForComparable {
 						}
 						else
 						{
-							swapStringArray(list1,i,num);
+							swapComparableArray(list1,i,num);
 							num = num -1 ;
 						}
 					}
@@ -53,6 +53,11 @@ public class TimSortForComparable {
 	}
 	public static void swapStringArray(String[] array, int i, int j) {
 		String temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+	public static void swapComparableArray(Comparable[] array, int i, int j) {
+		Comparable temp = array[i];
 		array[i] = array[j];
 		array[j] = temp;
 	}
