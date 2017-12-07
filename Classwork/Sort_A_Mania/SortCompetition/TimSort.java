@@ -131,6 +131,51 @@ public class TimSort {
 			}	
 		}
 	}
+	
+	public static void insertionSortString(String [] list1)
+	{
+		int fhp = 1;
+		if(list1[0].compareTo(list1[1]) > 0)
+		{
+			swapStringArray(list1,0,1);
+		}
+		while(true)
+		{
+			if(fhp >= list1.length-1)
+			{
+				break;
+			}
+			if(list1[fhp].compareTo(list1[fhp+1]) > 0)
+			{
+				fhp = fhp+1;
+				continue;
+			}
+			if(list1[fhp].compareTo(list1[fhp+1]) < 0)
+			{
+					swapStringArray(list1,fhp,fhp+1);
+					int num = fhp;
+					for(int i = fhp-1; i > -1; i--)
+					{
+						if(list1[i].compareTo(list1[num]) > 0)
+						{
+							break;
+						}
+						else
+						{
+							swapStringArray(list1,i,num);
+							num = num -1 ;
+						}
+					}
+					fhp = fhp + 1;
+					continue;
+			}	
+		}
+	}
+	public static void swapStringArray(String[] array, int i, int j) {
+		String temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
 	public static int[] TimSortsOP(int[] nums)
 	{
 		if(nums.length < 8)
@@ -146,29 +191,19 @@ public class TimSort {
 			return mergeIntOptimized(  TimSortsOP( oneHalf ), TimSortsOP( otherHalf));		
 		}
 	}
-	public static int[] TimSorts(int[] nums)
+	public static String[] TimSorts(String[] nums)
 	{
-		if(nums.length <= 64)
+		if(nums.length < 8)
 		{
-			insertionSort(nums);
+			insertionSortString(nums);
 			return nums;
 		}
 		else
 		{
-			boolean mergeDone = false;
-			int currentposition = 0; 
-			int[][] allArrays = new int[nums.length % 64][64];
-			int count = 0;
-			while(!mergeDone)
-			{
-				if(currentposition + 64 < nums.length) {
-					int [] tempArray = // idk what sadmans insertion sort is doing, will have to complete tomorrow
-					allArrays[count]= insertionSort(Arrays.copyOfRange(nums, currentposition, currentposition + 64));
-					count++;
-				}
-					
-			}
-			return mergeInt(  TimSorts( oneHalf ), TimSorts( otherHalf));		
+			int half = (nums.length/2 );
+			String[] oneHalf = Arrays.copyOfRange(nums, 0, half);
+			String[] otherHalf = Arrays.copyOfRange(nums, half, nums.length);
+			return mergeIntOptimized( TimSorts( oneHalf ), TimSorts( otherHalf));		
 		}
 	}
 	private static int[] mergeInt(int[] nums1, int[] nums2) {
