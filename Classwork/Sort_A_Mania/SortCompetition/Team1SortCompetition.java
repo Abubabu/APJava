@@ -1,4 +1,4 @@
-package SortCompetition;
+	package SortCompetition;
 
 import java.util.Arrays;
 
@@ -42,7 +42,8 @@ public class Team1SortCompetition extends SortCompetition {
 	}
 	public int challengeTwo(String[] strings, String query) //Counting Sort
 	{
-		return 0;
+		strings = TimSorts(strings);
+		return(binarySearchTim(strings,query,0,strings.length));
 	}
 	public int challengeThree(int[] num) //Insertion Sort
 	{
@@ -359,5 +360,135 @@ public class Team1SortCompetition extends SortCompetition {
 	public String greeting() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	// ALL STUFF FOR THE CHALLENGE TWO & BINARY search
+	public static int binarySearchTim(String[] array,  String query,int first,int last) {
+		if(last > first)
+		{
+			int index = (first+last)/2;
+			String guess = array[index];
+			
+			if(guess.compareTo(query) == 0)
+			{
+				return index;
+			}
+			
+			if(guess.compareTo(query) < 0)
+			{
+				return binarySearchTim(array,query,first,index);
+			}
+			if(guess.compareTo(query) > 0)
+			{
+				return binarySearchTim(array,query,index+1,last);
+			}
+		}
+		return -1;
+	}
+
+	public static void swapStringArray(String[] array, int i, int j) {
+		String temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+	public static String[] TimSorts(String[] nums)
+	{
+		if(nums.length < 8)
+		{
+			insertionSortStringBetter(nums);
+			return nums;
+		}
+		else
+		{
+			int half = (nums.length/2 );
+			String[] oneHalf = Arrays.copyOfRange(nums, 0, half);
+			String[] otherHalf = Arrays.copyOfRange(nums, half, nums.length);
+			return mergeString( TimSorts( oneHalf ), TimSorts( otherHalf));		
+		}
+	}
+
+	public static String[] mergeString(String[] list1, String[] list2)
+	{
+		String[] result = new String[list1.length+list2.length];
+		int onePosition = 0;
+		int twoPosition = 0;
+		while(true)
+		{
+			if(onePosition >= list1.length) //when all of list1 is in the results array
+			{
+				for(int i = twoPosition; i < list2.length; i++)
+				{
+					result[list1.length+i] = list2[i];
+				}
+				break;
+			}
+			if(twoPosition >= list2.length) //when all of list2 is in the results array
+			{
+				for(int i = onePosition; i < list1.length; i++)
+				{
+					result[list2.length+i] = list1[i];
+				}
+				break;
+			}
+			if(  list1[onePosition].compareTo(list2[twoPosition]) == 0) // doesn't matter which one you push into array
+			{
+				result[onePosition+twoPosition] = list2[twoPosition];
+				twoPosition++;
+				continue;
+			}
+			if(  list1[onePosition].compareTo(list2[twoPosition]) < 0 ) // if list1 is lower
+			{
+				result[onePosition+twoPosition] = list1[onePosition];
+				onePosition++;
+				continue;
+			}
+			if(  list2[twoPosition].compareTo(list1[onePosition]) < 0 ) // if list2 is lower
+			{
+				result[onePosition+twoPosition] = list2[twoPosition];
+				twoPosition++;
+				continue;
+			}
+		}
+		return result;
+	}
+
+	public static void insertionSortStringBetter(String [] list1)
+	{
+		int fhp = 1;
+		if(list1[0].compareTo(list1[1]) > 0)
+		{
+			swapStringArray(list1,0,1);
+		}
+		while(true)
+		{
+			if(fhp >= list1.length-1)
+			{
+				break;
+			}
+			if(list1[fhp].compareTo(list1[fhp+1]) < 0)
+			{
+				fhp = fhp+1;
+				continue;
+			}
+			if(list1[fhp].compareTo(list1[fhp+1]) > 0)
+			{
+					swapStringArray(list1,fhp,fhp+1);
+					int num = fhp;
+					for(int i = fhp-1; i > -1; i--)
+					{
+						if(list1[i].compareTo(list1[num]) < 0)
+						{
+							break;
+						}
+						else
+						{
+							swapStringArray(list1,i,num);
+							num = num -1 ;
+						}
+					}
+					fhp = fhp + 1;
+					continue;
+			}	
+		}
 	}
 }
