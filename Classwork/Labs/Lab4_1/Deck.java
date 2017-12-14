@@ -7,18 +7,21 @@ public class Deck {
 	private ArrayList<Card> Dealt;
 	public Deck(String[] rank, String[] suit, int[] pointValue) {
 		ArrayList<Card> undealt = new ArrayList<Card>();
-		for(String x : rank)
+		for(int i = 0; i < rank.length; i++)
 		{
+			String x = rank[i];
+			int z = pointValue[i];
 			for(String y : suit)
 			{
-				for(int z : pointValue)
-				{
 					Card card = new Card(x,y,z);
 					undealt.add(card);
-				}
 			}
 		}
 		this.unDealt = undealt;
+	}
+	public Card getCard(int x)
+	{
+		return unDealt.get(x);
 	}
 	public ArrayList<Card> getUnDealt() {
 		return unDealt;
@@ -36,6 +39,46 @@ public class Deck {
 	public String toString() {
 		return "Deck [unDealt=" + unDealt + ", Dealt=" + Dealt + "]";
 	} 
+	
+	public boolean isEmpty()
+	{
+		return unDealt.size() == 0;
+	}
+	
+	public int size()
+	{
+		return unDealt.size();
+	}
+	
+	public Card deal()
+	{
+		if(unDealt.size() == 0)
+		{
+			return null;
+		}
+		else
+		{
+			int target = (int)(Math.random()*unDealt.size());
+			Card card =unDealt.get(target);
+			unDealt.remove(target);
+			Dealt.add(card);
+			return card;
+		}
+	}
+	
+	public void shuffle()
+	{
+		unDealt.addAll(Dealt);
+		Dealt.clear();
+		
+		for(int i = 51; i > 0; i--)
+		{
+			int rand = (int)(Math.random()*i);
+			Card card = unDealt.get(i);
+			unDealt.set(i, unDealt.get(rand));
+			unDealt.set(rand, card);
+		}
+	}
 	
 	
 }

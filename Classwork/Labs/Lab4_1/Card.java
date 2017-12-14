@@ -11,7 +11,7 @@ public class Card{
 		this.suit = suit;
 		this.pointValue = pointValue;
 	}
-	public String getRank()
+	public String getRank() 
 	{
 		return rank;
 	}
