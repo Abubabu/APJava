@@ -18,6 +18,7 @@ public class Deck {
 			}
 		}
 		this.unDealt = undealt;
+		this.Dealt = new ArrayList<Card>();
 	}
 	public Card getCard(int x)
 	{
@@ -68,10 +69,13 @@ public class Deck {
 	
 	public void shuffle()
 	{
-		unDealt.addAll(Dealt);
-		Dealt.clear();
+		if(!(this.Dealt.size() == 0))
+		{
+			unDealt.addAll(this.Dealt);
+			this.Dealt.clear();
+		}
 		
-		for(int i = 51; i > 0; i--)
+		for(int i = this.unDealt.size()-1; i > 0; i--)
 		{
 			int rand = (int)(Math.random()*i);
 			Card card = unDealt.get(i);
