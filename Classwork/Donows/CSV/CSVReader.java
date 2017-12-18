@@ -2,6 +2,7 @@ package CSV;
 
 import java.io.FileWriter;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,10 +27,11 @@ public class CSVReader {
 		} */
 		String[] yes = {"apple","potat","mom","what","do","you"};
 		FileWriter fileWriter = new FileWriter("result1.csv");
+		BufferedWriter bw = new BufferedWriter(fileWriter);
 			for (String x : yes) {
-				fileWriter.write(x);
-				fileWriter.write(",");
-				fileWriter.write("\n");
+				bw.write(x);
+				bw.write(",");
+				bw.write("\n");
 			} 
 		Path pathToFile = Paths.get("result1.csv");
 		BufferedReader buff = Files.newBufferedReader(pathToFile);
@@ -41,7 +43,6 @@ public class CSVReader {
 					System.out.println(x);
 				} 
 		}
-		fileWriter.flush();
-        fileWriter.close();
+		
 	}
 }
