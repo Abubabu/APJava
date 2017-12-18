@@ -28,21 +28,22 @@ public class CSVReader {
 		String[] yes = {"apple","potat","mom","what","do","you"};
 		FileWriter fileWriter = new FileWriter("result1.csv");
 		BufferedWriter bw = new BufferedWriter(fileWriter);
-			for (String x : yes) {
-				bw.write(x);
-				bw.write(",");
-				bw.write("\n");
-			} 
+		for (String x : yes) {
+			bw.write(x);
+			bw.write(",");
+			bw.write("\n");
+		}
+		bw.flush();
+		bw.close();
 		Path pathToFile = Paths.get("result1.csv");
 		BufferedReader buff = Files.newBufferedReader(pathToFile);
 		String linez = buff.readLine();
 		while (linez != null) { 
-			linez = buff.readLine();
-			String[] attributes = linez.split(","); 
-				for (String x : attributes) {
-					System.out.println(x);
-				} 
+		linez = buff.readLine();
+		String[] attributes = linez.split(","); 
+			for (String x : attributes) {
+				System.out.println(x);
+			} 
 		}
-		
 	}
 }
