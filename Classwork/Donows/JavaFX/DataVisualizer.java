@@ -35,14 +35,54 @@ public class DataVisualizer extends Application{
 			ArrayList<Double> rate = new ArrayList<Double>();
 			rate = (ArrayList<Double>) potato.getDataDouble(2);
 			
+			ArrayList<String> race = new ArrayList<String>();
+			race = (ArrayList<String>) potato.getColumnData(1);
+			
 	        XYChart.Series series1 = new XYChart.Series();
-	        series1.setName("Points");
+	        series1.setName("Asian and Pacific Islander");
+	        
+	        XYChart.Series series2 = new XYChart.Series();
+	        series2.setName("Black Non-Hispanic");
+	        
+	        XYChart.Series series3 = new XYChart.Series();
+	        series3.setName("Other Hispanic");
+
+	        XYChart.Series series4 = new XYChart.Series();
+	        series4.setName("Other/Two or More");
+	        
+	        XYChart.Series series5 = new XYChart.Series();
+	        series5.setName("Puerto Rican");
+	        
+	        XYChart.Series series6 = new XYChart.Series();
+	        series6.setName("White Non-Hispanic");
 	        
 	        for(int i = 0; i < year.size(); i++)
 	        {
 	        	if(year.get(i) != null && rate.get(i) != null)
 	        	{
-	        		series1.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
+	        		switch (race.get(i)) {
+	                case "Asian and Pacific Islander":
+	                	series1.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
+	                    break;
+	                case "Black Non-Hispanic":
+	                	series2.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
+	                    break;
+	                case "White Non-Hispanic":
+	                	series6.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
+	                    break;
+	                case "Other Hispanic":
+	                	series3.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
+	                    break;
+	                case "Puerto Rican":
+	                	series5.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
+	                    break;
+	                case "Other/Two or More":
+	                	series4.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
+	                    break;
+	                default: 
+	                    break;
+	        		}
+	        	//	series1.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
 	        	}
 	        }
 	    /*    series1.getData().add(new XYChart.Data(4.2, 193.2));
@@ -63,7 +103,7 @@ public class DataVisualizer extends Application{
 	        series1.getData().add(new XYChart.Data(2.7, 41.2)); */
 	        
 	 
-	        sc.getData().addAll(series1);
+	        sc.getData().addAll(series1,series2,series3,series4,series5,series6);
 	        Scene scene  = new Scene(sc, 500, 400);
 	        stage.setScene(scene);
 	        stage.show();
