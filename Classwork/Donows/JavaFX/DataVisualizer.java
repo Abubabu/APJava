@@ -76,7 +76,7 @@ public class DataVisualizer extends Application{
 	                case "Puerto Rican":
 	                	series5.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
 	                    break;
-	                case "Other/Two or More":
+	                case "Other/Two or More": //bugged
 	                	series4.getData().add(new XYChart.Data(year.get(i), rate.get(i)));
 	                    break;
 	                default: 
