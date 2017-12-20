@@ -73,7 +73,14 @@ public class CSVUtilities {
 		for(int i = column; i < this.CSVData.size(); i = i + rowLength)
 		{
 			String x =(CSVData.get(i));
-			yes.add(Integer.parseInt(x));
+			if(!(x.equals("")))
+			{
+				yes.add(Integer.parseInt(x));
+			}
+			else
+			{
+				yes.add(null);
+			}
 		}
 		return yes;
 	}
@@ -84,7 +91,14 @@ public class CSVUtilities {
 		for(int i = column; i < this.CSVData.size(); i = i + rowLength)
 		{
 			String x =(CSVData.get(i));
-			yes.add(Double.parseDouble(x));
+			if(!(x.equals("")))
+			{
+				yes.add(Double.parseDouble(x));
+			}
+			else
+			{
+				yes.add(null);
+			}
 		}
 		return yes;
 	}
