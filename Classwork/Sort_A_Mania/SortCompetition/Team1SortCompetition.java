@@ -61,9 +61,9 @@ public class Team1SortCompetition extends SortCompetition {
 		insertionSort(associatedArray,nums);
 		return median(   medianFixed(	nums[	((int)nums.length/2)] ), medianFixed( nums[ ((int)nums.length/2)+1] )); 
 	}
-	public int challengeFive(Comparable[] arr, Comparable query) {
+/*	public int challengeFive(Comparable[] arr, Comparable query) {
 		TimsortsOP(arr);
-	}
+	}*/
 	private static void insertionSort(int [] list1)
 	{
 		if(list1.length == 0)
@@ -490,5 +490,11 @@ public class Team1SortCompetition extends SortCompetition {
 					continue;
 			}	
 		}
+	}
+
+	@Override
+	public int challengeFive(Comparable[] arr, Comparable query) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
